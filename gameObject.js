@@ -15,5 +15,12 @@ class GameObject {
     move(x, y){
         this.pos.add(createVector(x, y).mult(this.speed));
     }
+    moveto(x, y){  //return bool
+        if(p5.Vector.dist(createVector(x, y),this.pos)<=this.speed){
+            return false;
+        }
+        this.pos.add(createVector(x, y).sub(this.pos).normalize().mult(this.speed));
+        return true;
+    }
 }
 

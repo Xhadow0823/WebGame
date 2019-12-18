@@ -4,6 +4,8 @@ let BC = new BulletCtrler;
 let gObjTest = null;
 let zawarudo = new World();
 
+let ret = false;
+
 function setup() {
     createCanvas(windowWidth, 500);
     gObjTest = new GameObject(width/2, height/2);
@@ -18,16 +20,21 @@ function draw() {
         BC.update();
     }
 
-    //draw block
-    BC.draw();
-    zawarudo.draw();
-
-    keyP();
+    if(ret){
+        gObjTest.moveto(450, 200);
+    }else{
+        keyP();
+    }
     gObjTest.draw();
     if (BC.hit(x + 25, y + 25, 25)) {
         console.log("HIT");
     }
     BC.hitO(gObjTest);
+
+    //draw block
+    BC.draw();
+    zawarudo.draw();  // on the most top
+
 }
 
 let x = 50;
@@ -64,5 +71,8 @@ function keyPressed() {
         if(zawarudo.pause){
             console.log('ZA WARUDO');
         }
+    }
+    else if(keyCode === 71){
+        ret = !ret;
     }
 }
