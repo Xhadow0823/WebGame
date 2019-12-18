@@ -2,10 +2,12 @@ class Bullet {
     constructor(x, y){
         this.pos = createVector(x, y);
         this.isOut = false;
+        this.forced = true;
 
         this.r = 7.5;
         this.belong = 0;
         this.speed = createVector(0, -5);
+        this.acc = createVector(0, -0.1);
     }
     update(){
         // check isOut
@@ -16,6 +18,9 @@ class Bullet {
             // renew the pos
             this.pos.add(this.speed);
         }
+        if(!this.isOut && this.forced){
+            this.speed.add(this.acc);
+        }
     }
     draw(){
         fill('red');
@@ -25,13 +30,16 @@ class Bullet {
 
 
 class BulletCtrler {
-
     constructor(){
         this.Bullets = [];
     }
     shoot(x, y){
         //appeend
         this.Bullets.push(new Bullet(x,y));
+    }
+    clear(){
+        this.Bullets = [];
+        // console.log('all bullets were cleared');
     }
     update(){
         // check and delete bullet
@@ -56,7 +64,19 @@ class BulletCtrler {
             if(p5.Vector.dist(item.pos,createVector(ox, oy))<=item.r+oor){
                 item.isOut = true;
                 isHit = true;
-                console.log(item.pos.x, item.pos.y);
+                //console.log('HIT at : ',item.pos.x, item.pos.y);
+            }
+        });
+        return(isHit?true:false);
+    }
+    hitO(aobj){  //return:bool
+        //check if hit
+        let isHit = false;
+        this.Bullets.forEach((item,idx)=>{
+            if(p5.Vector.dist(item.pos,aobj.pos)<=item.r+aobj.size/2){
+                item.isOut = true;
+                isHit = true;
+                //console.log('HIT at : ', item.pos.x, item.pos.y);
             }
         });
         return(isHit?true:false);
