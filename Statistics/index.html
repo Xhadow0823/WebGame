@@ -1,0 +1,84 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Statistics Template</title>
+    <style>
+        html,
+        body {
+            margin: 0px;
+            padding: 0px;
+            background: wheat;
+            font-family: OCR-A, arial;
+        }
+
+        #stasc {
+            background: #00cec9;
+            width: 200px;
+            height: 600px;
+
+            overflow: overlay;
+            margin: 0 auto;
+        }
+
+        #stasc::-webkit-scrollbar {
+            display: none;
+        }
+
+        #stasc table {
+            margin: 0 auto;
+            padding-top: 50px;
+            width: 100%;
+            text-align: center;
+        }
+
+        #stasc table tr td,
+        th {
+            border-bottom: 1px solid navy;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="stasc">
+        <table>
+            <thead>
+                <tr>
+                    <th>Rank</th>
+                </tr>
+            </thead>
+            <tbody id="tbbd">
+                <!--Template Element-->
+                <tr>
+                    <td>1. PPT</td>
+                </tr>
+                <tr>
+                    <td>2. PPT</td>
+                </tr>
+                <tr>
+                    <td>3. PPT</td>
+                </tr>
+                <tr>
+                    <td>4. PPT</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div style="text-align: center; margin-top: 25px;">
+        <input type="button" value="add" id="testbtn">
+    </div>
+    <script>
+        let btn = document.getElementById('testbtn');
+        let tbbd = document.getElementById('tbbd');
+        let ele = "<tr><td>69. TMP</td></tr>";
+
+        btn.addEventListener('click', () => {
+            //console.log(tbbd.innerHTML);
+            tbbd.innerHTML += ele;
+        });
+    </script>
+</body>
+
+</html>

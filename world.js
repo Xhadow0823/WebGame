@@ -4,9 +4,14 @@ class World{
         this.state = 0;
         //0 : test,
         this.pause = false;
+        this.bgSpeed = 2;
 
         this.ui = new UI;
         this.CHEAT = false;
+
+        /////
+        this.b1y = -height;
+        this.b2y = 0;
     }
     initialize(){
 
@@ -27,6 +32,15 @@ class World{
     draw(){
         this.ui.showPause(this.pause);
         this.ui.showDetail();
+    }
+    background(pause){
+        image(bg, 0, this.b1y, width, height);
+        image(bg, 0, this.b2y, width, height);
+        if(!pause){
+            this.b1y += this.bgSpeed;  this.b2y += this.bgSpeed;
+            if(this.b1y >= height){  this.b1y = -height;}
+            if(this.b2y >= height){  this.b2y = -height;}
+        }
     }
 }
 

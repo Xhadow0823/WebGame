@@ -2,7 +2,8 @@ class GameObject {
     constructor(x, y){
         this.pos = createVector(x, y);;  //createVector(x, y);
 
-        this.speed = 5;
+        this.GOID = this.constructor.name.hashCode();
+        this.speed = 3;
         this.size = 50;
     }
     update(){

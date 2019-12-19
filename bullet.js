@@ -1,12 +1,12 @@
 class Bullet {
-    constructor(x, y, dir=1){
+    constructor(x, y, dir=1, belong=null){
         this.pos = createVector(x, y);
         this.isOut = false;
         this.forced = false;
         this.dir = createVector(0, dir);
 
         this.r = 7.5;
-        this.belong = 0;
+        this.belong = belong;
         this.speed = 5;
         this.acc = createVector(0, -0.1);
     }
@@ -34,9 +34,9 @@ class BulletCtrler {
     constructor(){
         this.Bullets = [];
     }
-    shoot(x, y, dir=-1){
+    shoot(x, y, dir=-1, belong=null){
         //appeend
-        this.Bullets.push(new Bullet(x,y, dir));
+        this.Bullets.push(new Bullet(x,y, dir, belong));
     }
     clear(){
         this.Bullets = [];
@@ -74,7 +74,8 @@ class BulletCtrler {
         //check if hit
         let isHit = false;
         this.Bullets.forEach((item,idx)=>{
-            if(p5.Vector.dist(item.pos,aobj.pos)<=item.r+aobj.size/2){
+            if(p5.Vector.dist(item.pos,aobj.pos)<=item.r+aobj.size/2
+                && (aobj.GOID!=item.belong||item.belong==null)){
                 item.isOut = true;
                 isHit = true;
                 //console.log('HIT at : ', item.pos.x, item.pos.y);
