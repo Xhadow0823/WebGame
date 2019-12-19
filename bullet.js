@@ -1,12 +1,13 @@
 class Bullet {
-    constructor(x, y){
+    constructor(x, y, dir=1){
         this.pos = createVector(x, y);
         this.isOut = false;
-        this.forced = true;
+        this.forced = false;
+        this.dir = createVector(0, dir);
 
         this.r = 7.5;
         this.belong = 0;
-        this.speed = createVector(0, -5);
+        this.speed = 5;
         this.acc = createVector(0, -0.1);
     }
     update(){
@@ -16,7 +17,7 @@ class Bullet {
             this.isOut = true;
         }else{
             // renew the pos
-            this.pos.add(this.speed);
+            this.pos.add(this.dir.copy().mult(this.speed));
         }
         if(!this.isOut && this.forced){
             this.speed.add(this.acc);
@@ -33,9 +34,9 @@ class BulletCtrler {
     constructor(){
         this.Bullets = [];
     }
-    shoot(x, y){
+    shoot(x, y, dir=-1){
         //appeend
-        this.Bullets.push(new Bullet(x,y));
+        this.Bullets.push(new Bullet(x,y, dir));
     }
     clear(){
         this.Bullets = [];

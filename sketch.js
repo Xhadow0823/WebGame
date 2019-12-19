@@ -3,12 +3,15 @@
 let BC = new BulletCtrler;
 let gObjTest = null;
 let zawarudo = new World();
+let ey;
+
 
 let ret = false;
 
 function setup() {
     createCanvas(windowWidth, 500);
     gObjTest = new GameObject(width/2, height/2);
+    ey = new Enemy(200, 200);
 }
 
 function draw() {
@@ -18,6 +21,7 @@ function draw() {
     //update blobk
     if (!zawarudo.pause) {
         BC.update();
+        ey.update();
     }
 
     if(ret){
@@ -34,7 +38,7 @@ function draw() {
     //draw block
     BC.draw();
     zawarudo.draw();  // on the most top
-
+    ey.draw();
 }
 
 let x = 50;

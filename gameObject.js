@@ -9,7 +9,7 @@ class GameObject {
         // pass
     }
     draw(){
-        fill('green');
+        fill(150, 100);
         circle(this.pos.x, this.pos.y, this.size);
     }
     move(x, y){
