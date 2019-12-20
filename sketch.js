@@ -1,6 +1,5 @@
 // This is a testing file
 
-let BC = new BulletCtrler;
 let gObjTest;
 let zawarudo;
 let ey;
@@ -11,15 +10,9 @@ let ret = false;
 // preload block
 let bg;
 function preload(){
-    String.prototype.hashCode = function(){
-        var hash = 0;
-        for (var i = 0; i < this.length; i++) {
-            var character = this.charCodeAt(i);
-            hash = ((hash<<5)-hash)+character;
-            hash = hash & hash; // Convert to 32bit integer
-        }
-        return hash;
-    }
+    //TOOLS
+
+    //ASSETS
     bg = loadImage('starry-sky.jpg');
 }
 // END PRELOAD BLOCK
@@ -31,17 +24,26 @@ function setup() {
     ey = new Enemy(200, 200);
 }
 
+let tt = new Timer(5000);
 function draw() {
     background(0);
-    zawarudo.background(zawarudo.pause);
+    zawarudo.background();
     
     //update blobk
     if (!zawarudo.pause) {
+        zawarudo.update();
         BC.update();
+        EC.update();
         ey.update();
         gObjTest.update();
     }
     shape();
+/*
+    if(tt!=null && tt.wait()){
+        console.log("Time's up!");
+        delete tt;
+    }
+*/
 
     if(ret){
         gObjTest.moveto(450, 200);
@@ -55,11 +57,13 @@ function draw() {
 
     BC.hitO(gObjTest);
     BC.hitO(ey);
+
     //draw block
     BC.draw();
+    EC.draw();
+    ey.draw();
     gObjTest.draw();
     zawarudo.draw();  // on the most top
-    ey.draw();
 }
 
 let x = 50;
@@ -72,6 +76,7 @@ function shape() {
 
 function mouseClicked() {
     BC.shoot(mouseX, mouseY);
+    //EC.instantiate(mouseX, mouseY);
 }
 
 function keyP() {

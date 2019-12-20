@@ -28,15 +28,17 @@ class World{
     }
     update(){
         //pass
+        story.updateStage();
     }
     draw(){
         this.ui.showPause(this.pause);
-        this.ui.showDetail();
+        this.ui.showCHEAT(this.pause);
+        //this.ui.showDetail();
     }
-    background(pause){
+    background(){
         image(bg, 0, this.b1y, width, height);
         image(bg, 0, this.b2y, width, height);
-        if(!pause){
+        if(!this.pause){
             this.b1y += this.bgSpeed;  this.b2y += this.bgSpeed;
             if(this.b1y >= height){  this.b1y = -height;}
             if(this.b2y >= height){  this.b2y = -height;}
@@ -62,6 +64,9 @@ class UI{
             rect(baseX-size/2, baseY-size/2, size*.4, size);
             rect(baseX-size/2+size*.6, baseY-size/2, size*.4, size);
         }
+    }
+    showCHEAT(){
+        text("CHEAT", width/2+50, height/2);
     }
     showDetail(){
         let dw = 100;

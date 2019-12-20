@@ -46,7 +46,7 @@ class BulletCtrler {
         // check and delete bullet
         for(let i = this.Bullets.length-1; i>=0; i--){
             if(this.Bullets[i].isOut){
-                console.log("OUT");
+                //console.log("OUT");
                 this.Bullets.splice(i, 1);
             }else{
                 this.Bullets[i].update();
@@ -78,9 +78,12 @@ class BulletCtrler {
                 && (aobj.GOID!=item.belong||item.belong==null)){
                 item.isOut = true;
                 isHit = true;
+                aobj.hurt();
                 //console.log('HIT at : ', item.pos.x, item.pos.y);
             }
         });
         return(isHit?true:false);
     }
 }
+
+let BC = new BulletCtrler();
