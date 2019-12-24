@@ -7,6 +7,7 @@ class GameObject {
         this.speed = 3;
         this.size = 50;
         this.life = 1;
+        this.fullLife = 1;
     }
     update(){
         // pass

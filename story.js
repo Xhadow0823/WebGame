@@ -3,20 +3,20 @@ class Stage{
     moved = false;
 
     instan = [
-        {x:50, y:87},
-        {x:75, y:87},
-        {x:25, y:87},
-        {x:00, y:87}
+        {x:400, y:-870},
+        {x:550, y:-870},
+        {x:650, y:-870},
+        {x:800, y:-870}
     ];
     path = [
-        {x:400, y:150},
-        {x:550, y:160},
-        {x:650, y:140},
-        {x:800, y:130}
+        {x:400, y:650},
+        {x:550, y:660},
+        {x:650, y:640},
+        {x:800, y:630}
     ]
     
     pass(){
-        // check EC
+        // check ECaaaa
         if(EC.Enemies.length == 0){
             return true;
         }else{
@@ -62,6 +62,33 @@ class Story{
     }
 }
 
-let story = new Story();
+//let story = new Story();
 
+function loadStage(){
 story.addStage(new Stage());
+
+let gameover = false;
+story.addStage(new class{
+    instaned = true;
+    moved = true;
+    pass(){
+        //  infinity stage
+        if(gameover===true){
+            console.log('end INFINITY');
+            return true;
+        }else{
+            return false;
+        }
+    }
+});
+
+story.addStage(new class{
+    instaned = true;
+    moved = true;
+    pass(){
+        //  end stage
+        //console.log('END');
+        return false;
+    }
+});
+}

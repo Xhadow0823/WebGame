@@ -1,6 +1,8 @@
 class Enemy extends GameObject {
     constructor(x, y){
         super(x, y);
+        this.fullLife = this.life = 5;
+        this.speed = 2;
 
         this.BC = BC;  //refference
         
@@ -15,9 +17,14 @@ class Enemy extends GameObject {
             this.dccnt += deltaTime;
         }
     }
-    /*draw(){
+    draw(){  //extend
         super.draw();
-    }*/
+        push();
+        fill(255);
+        rect(this.pos.x-this.size/2, this.pos.y-this.size/2-15,
+             this.size*this.life/this.fullLife, 5);
+        pop();
+    }
 }
 
 class EnemyCtrler{

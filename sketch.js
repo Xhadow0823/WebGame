@@ -1,5 +1,6 @@
 // This is a testing file
 
+let story;
 let player;
 let WORLD;
 let BC;
@@ -21,6 +22,7 @@ function preload(){
 
 function setup() {
     createCanvas(windowWidth, 500);
+    story = new Story();loadStage();
     WORLD = new World();
     BC = new BulletCtrler();
     EC = new EnemyCtrler();
