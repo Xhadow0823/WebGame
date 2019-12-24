@@ -4,7 +4,7 @@ class Enemy extends GameObject {
 
         this.BC = BC;  //refference
         
-        this.dc = 500;
+        this.dc = 550;
         this.dccnt = 0;
     }
     update(){  //overload
@@ -50,5 +50,3 @@ class EnemyCtrler{
         });
     }
 }
-
-let EC = new EnemyCtrler();

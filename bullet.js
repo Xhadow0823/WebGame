@@ -5,6 +5,9 @@ class Bullet {
         this.forced = false;
         this.dir = createVector(0, dir);
 
+        this.rot = false;
+        this.rotSpeed = 10;
+        this.deg = 0;
         this.r = 7.5;
         this.belong = belong;
         this.speed = 5;
@@ -23,9 +26,20 @@ class Bullet {
             this.speed.add(this.acc);
         }
     }
-    draw(){
-        fill('red');
-        circle(this.pos.x, this.pos.y, 2*this.r);
+    draw(pause){
+        push();
+            fill('red');
+            rectMode(CENTER);
+            //rect(this.pos.x, this.pos.y, this.r*2, this.r*2);
+            translate(this.pos.x, this.pos.y);
+            angleMode(DEGREES);
+            if(!pause){
+                this.deg = (this.deg + this.rotSpeed)%360;
+            }
+            rotate(this.deg);
+            rect(0, 0, this.r*2, this.r*2);
+            //circle(this.pos.x, this.pos.y, 2*this.r);
+        pop();
     }
 }
 
@@ -33,6 +47,7 @@ class Bullet {
 class BulletCtrler {
     constructor(){
         this.Bullets = [];
+        this.world = WORLD;
     }
     shoot(x, y, dir=-1, belong=null){
         //appeend
@@ -55,7 +70,7 @@ class BulletCtrler {
     }
     draw(){
         this.Bullets.forEach((item,idx)=>{
-            item.draw();
+            item.draw(this.world.pause);
         });
     }
     hit(ox, oy, oor=0){  //return:bool
@@ -85,5 +100,3 @@ class BulletCtrler {
         return(isHit?true:false);
     }
 }
-
-let BC = new BulletCtrler();

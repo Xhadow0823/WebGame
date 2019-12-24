@@ -1,7 +1,9 @@
 // This is a testing file
 
-let gObjTest;
-let zawarudo;
+let player;
+let WORLD;
+let BC;
+let EC;
 let ey;
 
 
@@ -19,23 +21,25 @@ function preload(){
 
 function setup() {
     createCanvas(windowWidth, 500);
-    gObjTest = new Player(width/2, height/2);
-    zawarudo = new World();
+    WORLD = new World();
+    BC = new BulletCtrler();
+    EC = new EnemyCtrler();
+    player = new Player(width/2, height/2);
     ey = new Enemy(200, 200);
 }
 
 let tt = new Timer(5000);
 function draw() {
     background(0);
-    zawarudo.background();
+    WORLD.background();
     
     //update blobk
-    if (!zawarudo.pause) {
-        zawarudo.update();
+    if (!WORLD.pause) {
+        WORLD.update();
         BC.update();
         EC.update();
         ey.update();
-        gObjTest.update();
+        player.update();
     }
     shape();
 /*
@@ -46,7 +50,7 @@ function draw() {
 */
 
     if(ret){
-        gObjTest.moveto(450, 200);
+        player.moveto(450, 200);
     }else{
         keyP();
     }
@@ -55,15 +59,15 @@ function draw() {
         console.log("HIT BOX");
     }
 
-    BC.hitO(gObjTest);
+    BC.hitO(player);
     BC.hitO(ey);
 
     //draw block
     BC.draw();
     EC.draw();
     ey.draw();
-    gObjTest.draw();
-    zawarudo.draw();  // on the most top
+    player.draw();
+    WORLD.draw();  // on the most top
 }
 
 let x = 50;
@@ -93,13 +97,13 @@ function keyP() {
     if (keyIsDown(83)) {
         y = +1;
     }
-    gObjTest.move(x, y);
+    player.move(x, y);
 }
 
 function keyPressed() {  //callback
     if (keyCode === 27) {
-        zawarudo.changePause();
-        if(zawarudo.pause){
+        WORLD.changePause();
+        if(WORLD.pause){
             console.log('ZA WARUDO');
         }
     }

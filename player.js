@@ -2,6 +2,7 @@ class Player extends GameObject{
     constructor(x, y){
         super(x, y);
 
+        this.dir = -1;
         this.BC = BC;
         this.dc = 300;
         this.dccnt = 0;
