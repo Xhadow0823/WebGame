@@ -1,7 +1,10 @@
 class GameObject {
+    style = [urchin, squid, plastic_bag];
     constructor(x, y){
         this.pos = createVector(x, y);;  //createVector(x, y);
         this.dir = 1;
+
+        this.cate = 2;
         
         this.GOID = this.constructor.name.hashCode();
         this.speed = 3;
@@ -13,10 +16,14 @@ class GameObject {
         // pass
     }
     draw(){
+        push();
         fill(150, 100);
         circle(this.pos.x, this.pos.y, this.size);
+        image(this.style[this.cate], this.pos.x-this.size/2, this.pos.y-this.size/2,
+              this.size, this.size);
         stroke(255, 100);
         line(this.pos.x, this.pos.y, this.pos.x, this.pos.y+this.size/2*this.dir);
+        pop();
     }
     move(x, y){
         this.pos.add(createVector(x, y).mult(this.speed));

@@ -1,17 +1,19 @@
 class Bullet {
+    style = [urchin, squid, plastic_bag];
     constructor(x, y, dir=1, belong=null){
         this.pos = createVector(x, y);
         this.isOut = false;
-        this.forced = false;
+        this.forced = true;
         this.dir = createVector(0, dir);
+        this.cate = 2;
 
-        this.rot = false;
-        this.rotSpeed = 10;
-        this.deg = 0;
-        this.r = 7.5;
+        this.rot = true;
+        this.rotSpeed = 3;
+        this.deg = (this.rot?randomGaussian(0,180):0);
+        this.r = 15;
         this.belong = belong;
         this.speed = 5;
-        this.acc = createVector(0, -0.1);
+        this.acc = +0.01;
     }
     update(){
         // check isOut
@@ -23,21 +25,23 @@ class Bullet {
             this.pos.add(this.dir.copy().mult(this.speed));
         }
         if(!this.isOut && this.forced){
-            this.speed.add(this.acc);
+            this.speed += this.acc;
         }
     }
     draw(pause){
         push();
             fill('red');
-            rectMode(CENTER);
             //rect(this.pos.x, this.pos.y, this.r*2, this.r*2);
             translate(this.pos.x, this.pos.y);
             angleMode(DEGREES);
-            if(!pause){
+            if(!pause && this.rot){
                 this.deg = (this.deg + this.rotSpeed)%360;
             }
             rotate(this.deg);
-            rect(0, 0, this.r*2, this.r*2);
+            rectMode(CENTER);
+            //rect(0, 0, this.r*2, this.r*2);
+            image(this.style[this.cate], 0-this.r, 0-this.r,
+                  this.r*2, this.r*2);
             //circle(this.pos.x, this.pos.y, 2*this.r);
         pop();
     }

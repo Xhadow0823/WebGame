@@ -12,11 +12,17 @@ let ret = false;
 
 // preload block
 let bg;
+let urchin;
+let squid;
+let plastic_bag;
 function preload(){
     //TOOLS
 
     //ASSETS
     bg = loadImage('starry-sky.jpg');
+    urchin = loadImage('sea_urchin.png');
+    squid = loadImage('squid.png');
+    plastic_bag = loadImage('plastic_bag.png');
 }
 // END PRELOAD BLOCK
 
@@ -32,7 +38,7 @@ function setup() {
 
 let tt = new Timer(5000);
 function draw() {
-    background(0);
+    background(255);
     WORLD.background();
     
     //update blobk
