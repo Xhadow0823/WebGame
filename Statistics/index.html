@@ -47,21 +47,15 @@
         <table>
             <thead>
                 <tr>
-                    <th>Rank</th>
+                    <th colspan="3">Rank</th>
                 </tr>
             </thead>
             <tbody id="tbbd">
                 <!--Template Element
                 <tr class="rank-r">
-                    <td><span class="rank-i">1</span>. PPT</td>
+                    <td>1.</td><td>TMP</td><td>878787</td>
                 </tr>
                 -->
-                <tr class="rank-r">
-                    <td><span class="rank-i">1</span>. PevevevPT</td>
-                </tr>
-                <tr class="rank-r">
-                    <td><span class="rank-i">2</span>. PPecT</td>
-                </tr>
             </tbody>
         </table>
     </div>
@@ -71,30 +65,32 @@
     <script>
         let btn = document.getElementById('testbtn');
         let tbbd = document.getElementById('tbbd');
-        let ele = "<tr><td>69. TMP</td></tr>";
 
-        btn.addEventListener('click', () => {
-            //console.log(tbbd.innerHTML);
-            tbbd.innerHTML += ele;
-        });
+        $('#testbtn').on('click', ()=>{
+            $('#tbbd').append(`
+                <tr class="rank-r">
+                    <td>69.</td><td>TMP</td><td>878787</td>
+                </tr>
+            `);
+        })
 
-        let url = 'https://api.myjson.com/bins/17pdmg';
-/*
+        let url = 'https://api.myjson.com/bins/19wwa0';
         $.ajax({
             dataType: "json",
             url: url,
             data: null,
             success: function(data){
-                console.table(data.rank);
+                //console.table(data.rank);
                 data.rank.forEach((item,idx)=>{
                     $('#tbbd').append(`
                     <tr class="rank-r">
-                    <td><span class="rank-i">${idx+1}</span>. ${item}</td>
+                    <td>${idx+1}.</td><td>${item[0]}</td><td>${item[1]}</td>
                     </tr>`);
                 });
             }
         });
-        */
+        
+        // update(name, score)
     </script>
 </body>
 
