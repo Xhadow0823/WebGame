@@ -4,6 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Statistics Template</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <style>
         body{
             margin: 0px;
@@ -72,10 +73,12 @@
     </div>
 
     <div style="text-align:center;" >
-        <input type="button" value="AddCell" id="addCell"><br>
-        <span><input type="number" name="id" id="count">
+        <input type="button" value="AddCell" id="addCell" onclick="addP()"><br>
+        <span>
+            <input type="number" name="id" id="cntInput">
             <input type="button" value="AddCount">
         </span>
     </div>
+    <script src="DOMCtrler.js"></script>
 </body>
 </html>

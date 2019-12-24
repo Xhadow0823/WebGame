@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Statistics Template</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <style>
         html,
         body {
@@ -50,18 +51,16 @@
                 </tr>
             </thead>
             <tbody id="tbbd">
-                <!--Template Element-->
-                <tr>
-                    <td>1. PPT</td>
+                <!--Template Element
+                <tr class="rank-r">
+                    <td><span class="rank-i">1</span>. PPT</td>
                 </tr>
-                <tr>
-                    <td>2. PPT</td>
+                -->
+                <tr class="rank-r">
+                    <td><span class="rank-i">1</span>. PevevevPT</td>
                 </tr>
-                <tr>
-                    <td>3. PPT</td>
-                </tr>
-                <tr>
-                    <td>4. PPT</td>
+                <tr class="rank-r">
+                    <td><span class="rank-i">2</span>. PPecT</td>
                 </tr>
             </tbody>
         </table>
@@ -78,6 +77,24 @@
             //console.log(tbbd.innerHTML);
             tbbd.innerHTML += ele;
         });
+
+        let url = 'https://api.myjson.com/bins/17pdmg';
+/*
+        $.ajax({
+            dataType: "json",
+            url: url,
+            data: null,
+            success: function(data){
+                console.table(data.rank);
+                data.rank.forEach((item,idx)=>{
+                    $('#tbbd').append(`
+                    <tr class="rank-r">
+                    <td><span class="rank-i">${idx+1}</span>. ${item}</td>
+                    </tr>`);
+                });
+            }
+        });
+        */
     </script>
 </body>
 
