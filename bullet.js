@@ -1,19 +1,36 @@
 class Bullet {
-    style = [urchin, squid, plastic_bag];
-    constructor(x, y, dir=1, belong=null){
-        this.pos = createVector(x, y);
+    style = [urchin, squid, plastic_bag, strawW];
+    constructor(x, y, dir=1, belong=null, type=0){
+        this.bOffsetX = 0;  this.bOffsetY = -120;
+        this.pos = createVector(x+this.bOffsetX, y+this.bOffsetY*dir);
         this.isOut = false;
         this.forced = true;
         this.dir = createVector(0, dir);
-        this.cate = 2;
+        this.cate = 3;
+        this.shape = 1;  //0:circle, 1:rect
 
-        this.rot = true;
+        this.rot = false;
         this.rotSpeed = 3;
         this.deg = (this.rot?randomGaussian(0,180):0);
-        this.r = 15;
+        this.r = 15;  this.width = 10;  this.height = 240;
         this.belong = belong;
-        this.speed = 5;
+        this.speed = 3;
         this.acc = +0.01;
+
+        switch(type){
+            case 0:
+            default:
+
+                break;
+            case 0:
+                break;
+            case 0:
+                break;
+            case 0:
+                break;
+            case 0:
+                break;
+        }
     }
     update(){
         // check isOut
@@ -39,10 +56,15 @@ class Bullet {
             }
             rotate(this.deg);
             rectMode(CENTER);
-            //rect(0, 0, this.r*2, this.r*2);
-            image(this.style[this.cate], 0-this.r, 0-this.r,
-                  this.r*2, this.r*2);
-            //circle(this.pos.x, this.pos.y, 2*this.r);
+            if(this.shape){
+                rect(0, 0, this.width, this.height);
+                image(this.style[this.cate], 0-this.width/2, 0-this.height/2,
+                    this.width, this.height);
+            }else{
+                circle(0, 0, 2*this.r);
+                image(this.style[this.cate], 0-this.r, 0-this.r,
+                    this.r*2, this.r*2);
+            }
         pop();
     }
 }
@@ -93,14 +115,44 @@ class BulletCtrler {
         //check if hit
         let isHit = false;
         this.Bullets.forEach((item,idx)=>{
-            if(p5.Vector.dist(item.pos,aobj.pos)<=item.r+aobj.size/2
+            if(item.shape==0){  //circle bullet
+                if(p5.Vector.dist(item.pos,aobj.pos)<=item.r+aobj.r/2
                 && (aobj.GOID!=item.belong||item.belong==null)){
-                item.isOut = true;
-                isHit = true;
-                aobj.hurt();
-                //console.log('HIT at : ', item.pos.x, item.pos.y);
+                    isHit = true;
+                    item.isOut = true;
+                    aobj.hurt();
+                    //console.log('HIT at : ', item.pos.x, item.pos.y);
+                }
+            }else{  //rect bullet
+                let dx = abs(aobj.pos.x - (item.pos.x));
+                let dy = abs(aobj.pos.y - (item.pos.y));
+
+                if(dx > (item.width/2 + aobj.r)){  return;}
+                if(dy > (item.height/2 + aobj.r)){  return;}
+
+                if(dx <= (item.width/2) && (aobj.GOID!=item.belong||item.belong==null)){
+                    isHit = true;
+                    item.isOut = true;
+                    aobj.hurt();
+                    return ;
+                }
+                if(dy <= (item.height/2) && (aobj.GOID!=item.belong||item.belong==null)){
+                    isHit = true;
+                    item.isOut = true;
+                    aobj.hurt();
+                    return ;
+                }
+
+                let cor_sq = pow(dx - item.width/2, 2) + 
+                             pow(dy - item.height/2, 2);
+                if(cor_sq <= pow(aobj.r,2) && (aobj.GOID!=item.belong||item.belong==null)){
+                    isHit = true;
+                    item.isOut = true;
+                    aobj.hurt();
+                    return;
+                }
             }
         });
-        return(isHit?true:false);
+        return isHit;
     }
 }

@@ -15,6 +15,7 @@ let bg;
 let urchin;
 let squid;
 let plastic_bag;
+let strawW;
 function preload(){
     //TOOLS
 
@@ -23,6 +24,7 @@ function preload(){
     urchin = loadImage('sea_urchin.png');
     squid = loadImage('squid.png');
     plastic_bag = loadImage('plastic_bag.png');
+    strawW = loadImage('strawW.png');
 }
 // END PRELOAD BLOCK
 

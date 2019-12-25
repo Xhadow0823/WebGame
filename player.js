@@ -4,7 +4,8 @@ class Player extends GameObject{
 
         this.dir = -1;
         this.BC = BC;
-        this.dc = 300;
+
+        this.dc = 1500;
         this.dccnt = 0;
     }
     update(){  //overload

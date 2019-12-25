@@ -21,8 +21,8 @@ class Enemy extends GameObject {
         super.draw();
         push();
         fill(255);
-        rect(this.pos.x-this.size/2, this.pos.y-this.size/2-15,
-             this.size*this.life/this.fullLife, 5);
+        rect(this.pos.x-this.r, this.pos.y-this.r-15,
+             this.r*2*this.life/this.fullLife, 5);
         pop();
     }
 }
@@ -37,7 +37,7 @@ class EnemyCtrler{
     }
     update(){
         for(let i = this.Enemies.length-1; i >= 0; i--){
-            if(this.Enemies[i].life>0){
+            if(this.Enemies[i].life>0 && this.Enemies[i].pos.y<=height){
                 this.Enemies[i].update();
                 this.BC.hitO(this.Enemies[i]);
             }else{
