@@ -36,35 +36,20 @@
             color: navy;
             text-align: center;
         }
-        .cell img {
-            /*max-width:100%;*/
+        .cell img{
+            max-width:100%;
+            /*padding-top: 5px;*/
             max-height:80%;
         }
+        .cell span {
+            width: 100%;
+            display: block;
+        }
+
     </style>
 </head>
 <body>
     <div id="illu">
-        <!--this is a template of 'cell'-->
-        <div class="cell">
-            <img src="cactus.png" alt="gameObj">
-            <span>name</span>
-        </div>
-
-        <!--this is a template of 'cell'-->
-        <div class="cell">
-            <img src="cactus.png" alt="gameObj">
-            <span>name</span>
-        </div>
-        <!--this is a template of 'cell'-->
-        <div class="cell">
-            <img src="cactus.png" alt="gameObj">
-            <span>name</span>
-        </div>
-        <!--this is a template of 'cell'-->
-        <div class="cell">
-            <img src="cactus.png" alt="gameObj">
-            <span>name</span>
-        </div>
         <!--this is a template of 'cell'-->
         <div class="cell">
             <img src="cactus.png" alt="gameObj">
@@ -75,7 +60,7 @@
     <div style="text-align:center;" >
         <input type="button" value="AddCell" id="addCell" onclick="addP()"><br>
         <span>
-            <input type="number" name="id" id="cntInput">
+            <input type="text" name="id" id="nInput">
             <input type="button" value="AddCount">
         </span>
     </div>

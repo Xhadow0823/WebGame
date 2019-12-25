@@ -1,10 +1,10 @@
 class GameObject {
-    style = [urchin, squid, plastic_bag];
+    style = [plastic_bag, turtleB];
     constructor(x, y){
         this.pos = createVector(x, y);  //createVector(x, y);
         this.dir = 1;
 
-        this.cate = 2;
+        this.cate = 1;
         
         this.GOID = this.constructor.name.hashCode();
         this.speed = 3;

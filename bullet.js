@@ -1,7 +1,7 @@
 class Bullet {
-    style = [urchin, squid, plastic_bag, strawW];
-    constructor(x, y, dir=1, belong=null, type=0){
-        this.bOffsetX = 0;  this.bOffsetY = -120;
+    style = [urchin, squid, strawW, bottleG];
+    constructor(x, y, dir=1, belong=null, type=1){
+        this.bOffsetX = 0;  this.bOffsetY = 0;
         this.pos = createVector(x+this.bOffsetX, y+this.bOffsetY*dir);
         this.isOut = false;
         this.forced = true;
@@ -14,21 +14,38 @@ class Bullet {
         this.deg = (this.rot?randomGaussian(0,180):0);
         this.r = 15;  this.width = 10;  this.height = 240;
         this.belong = belong;
-        this.speed = 3;
+        this.speed = 1.5;
         this.acc = +0.01;
 
         switch(type){
-            case 0:
+            case 0:  //urchin
             default:
-
+                this.cate = 0;
+                this.shape = 0;
+                this.r = 15;
+                this.rot = true;  this.rotSpeed = 3;
+                this.pos = createVector(x, y);
                 break;
-            case 0:
+            case 1:  //squid
+                this.cate = 1;
+                this.shape = 1;
+                this.width = 20;  this.height = 40;
+                this.pos = createVector(x, y+40*dir);
                 break;
-            case 0:
+            case 2:  //strawW
+                this.cate = 2;
+                this.shape = 1;
+                this.width = 10;  this.height = 240;
+                this.pos = createVector(x, y-120*dir);
                 break;
-            case 0:
+            case 3:
+                this.cate = 3;
+                this.shape = 1;
+                this.width = 20;  this.height = 60;
+                this.rot = true;  this.rotSpeed = 3;  this.deg = (this.rot?randomGaussian(0,180):0);
+                this.pos = createVector(x, y);
                 break;
-            case 0:
+            case 4:
                 break;
         }
     }
@@ -116,7 +133,7 @@ class BulletCtrler {
         let isHit = false;
         this.Bullets.forEach((item,idx)=>{
             if(item.shape==0){  //circle bullet
-                if(p5.Vector.dist(item.pos,aobj.pos)<=item.r+aobj.r/2
+                if(p5.Vector.dist(item.pos,aobj.pos)<=item.r+aobj.r
                 && (aobj.GOID!=item.belong||item.belong==null)){
                     isHit = true;
                     item.isOut = true;

@@ -6,7 +6,7 @@ class Enemy extends GameObject {
 
         this.BC = BC;  //refference
         
-        this.dc = 550;
+        this.dc = 800;
         this.dccnt = 0;
     }
     update(){  //overload
@@ -19,7 +19,7 @@ class Enemy extends GameObject {
     }
     draw(){  //extend
         super.draw();
-        push();
+        push();  //life bar
         fill(255);
         rect(this.pos.x-this.r, this.pos.y-this.r-15,
              this.r*2*this.life/this.fullLife, 5);

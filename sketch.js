@@ -16,6 +16,8 @@ let urchin;
 let squid;
 let plastic_bag;
 let strawW;
+let bottleG;
+let turtleB;
 function preload(){
     //TOOLS
 
@@ -25,11 +27,13 @@ function preload(){
     squid = loadImage('squid.png');
     plastic_bag = loadImage('plastic_bag.png');
     strawW = loadImage('strawW.png');
+    bottleG = loadImage('plastic_bottleG.png');
+    turtleB = loadImage('turtle_back.png');
 }
 // END PRELOAD BLOCK
 
 function setup() {
-    createCanvas(windowWidth, 500);
+    createCanvas(windowWidth, windowHeight);
     story = new Story();loadStage();
     WORLD = new World();
     BC = new BulletCtrler();
@@ -38,7 +42,6 @@ function setup() {
     ey = new Enemy(200, 200);
 }
 
-let tt = new Timer(5000);
 function draw() {
     background(255);
     WORLD.background();
@@ -50,14 +53,10 @@ function draw() {
         EC.update();
         ey.update();
         player.update();
+        BC.hitO(player);
+        BC.hitO(ey);
     }
     shape();
-/*
-    if(tt!=null && tt.wait()){
-        console.log("Time's up!");
-        delete tt;
-    }
-*/
 
     if(ret){
         player.moveto(450, 200);
@@ -69,8 +68,7 @@ function draw() {
         console.log("HIT BOX");
     }
 
-    BC.hitO(player);
-    BC.hitO(ey);
+
 
     //draw block
     BC.draw();
@@ -82,7 +80,6 @@ function draw() {
 
 let x = 50;
 let y = 50;
-
 function shape() {
     fill(255);
     rect(x, y, 50, 50);

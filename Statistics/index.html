@@ -35,9 +35,16 @@
             text-align: center;
         }
 
-        #stasc table tr td,
-        th {
+        #stasc table tr td,th {
             border-bottom: 1px solid navy;
+        }
+        #stasc table tr::before{
+            content: "";
+            position: absolute;
+            background-image: url("crown.png");
+            background-size:30px 30px;
+            width:30px;
+            height:30px;
         }
     </style>
 </head>
