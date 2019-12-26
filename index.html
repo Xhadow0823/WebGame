@@ -1,9 +1,21 @@
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
     <script src="p5.js"></script>
     <script src="tools.js"></script>
     <script src="world.js"></script>
@@ -17,16 +29,182 @@
     <script src="JQtest.js"></script>
     <title>Test Page</title>
 </head>
+
 <body>
-    <div id="displayer"><center>Something Wrong</center></div>
+    <div id="displayer">
+        <center>Something Wrong</center>
+    </div>
     <div id="GameName">
         <h1>Hello World</h1>
     </div>
+    <div class="container d-flex flex-column flex-md-row justify-content-between">
+        <a class="py-2" href="#" aria-label="Product">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor"
+                stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="d-block mx-auto" role="img"
+                viewBox="0 0 24 24" focusable="false">
+                <title>Product</title>
+                <circle cx="12" cy="12" r="10"></circle>
+                <path
+                    d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83m13.79-4l-5.74 9.94">
+                </path>
+            </svg>
+        </a>
+        <a class="py-2 d-none d-md-inline-block" href="#">Tour</a>
+        <a class="py-2 d-none d-md-inline-block" href="#">Product</a>
+        <a class="py-2 d-none d-md-inline-block" href="#">Features</a>
+        <a class="py-2 d-none d-md-inline-block" href="#">Enterprise</a>
+        <a class="py-2 d-none d-md-inline-block" href="#">Support</a>
+        <a class="py-2 d-none d-md-inline-block" href="#">Pricing</a>
+        <a class="py-2 d-none d-md-inline-block" href="#">Cart</a>
+    </div>
+
+
+
+    <div class="card-deck mb-3 text-center">
+        <div class="card mb-4 shadow-sm">
+            <div class="card-header">
+                <h4 class="my-0 font-weight-normal">
+                    <font style="vertical-align: inherit;">
+                        <font style="vertical-align: inherit;">Tips</font>
+                    </font>
+                </h4>
+            </div>
+            <div class="card-body">
+                <button id="IWTK" class="btn btn-lg btn-block btn-outline-warning">I want to know...</button>
+                <ul id="ul_1">
+                    <h1 class="card-title pricing-card-title">
+                        </font><small class="text-muted">
+                            <font style="vertical-align: inherit;">
+                                <font style="vertical-align: inherit;">Do You Know......？</font>
+                            </font>
+                        </small>
+                    </h1>
+                    <li>
+                        <font style="vertical-align: inherit;">
+                            <font style="vertical-align: inherit;">被子彈打到，就會被扣血。</font>
+                        </font>
+                    </li>
+                    <li>
+                        <font style="vertical-align: inherit;">
+                            <font style="vertical-align: inherit;">要畫一臺戰艦時，只要先畫一艘航空母艦，再把其餘部分擦掉就完成了。</font>
+                        </font>
+                    </li>
+                    <li>
+                        <font style="vertical-align: inherit;">
+                            <font style="vertical-align: inherit;">誰能想的到，這名16歲環保少女，在四年前，竟只是一名12歲少女！</font>
+                        </font>
+                    </li>
+                    <li>
+                        <font style="vertical-align: inherit;">
+                            <font style="vertical-align: inherit;">每個成功的工程師背後，都有一條彎曲的脊椎。</font>
+                        </font>
+                    </li>
+                    <li>
+                        <font style="vertical-align: inherit;">
+                            <font style="vertical-align: inherit;">夜景很美麗吧？到了這時候，工程師們還在工作喔！</font>
+                        </font>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card mb-4 shadow-sm">
+            <div class="card-header">
+                <h4 class="my-0 font-weight-normal">
+                    <font style="vertical-align: inherit;">
+                        <font style="vertical-align: inherit;">Illustration</font>
+                    </font>
+                </h4>
+            </div>
+            <div class="card-body">
+                <button type="button" id="VTNI" class="btn btn-lg btn-block btn-outline-info">
+                    <font style="vertical-align: inherit;">
+                        <font style="vertical-align: inherit;">View the newest illustrations</font>
+                    </font>
+                </button>
+                <ul id="ul_2">
+                    <h1 class="card-title pricing-card-title">
+                        <font style="vertical-align: inherit;">
+                            <font style="vertical-align: inherit;">$ 15 </font>
+                        </font><small class="text-muted">
+                            <font style="vertical-align: inherit;">
+                                <font style="vertical-align: inherit;">/月</font>
+                            </font>
+                        </small>
+                    </h1>
+                    <li>
+                        <font style="vertical-align: inherit;">
+                            <font style="vertical-align: inherit;">包括20位用戶</font>
+                        </font>
+                    </li>
+                    <li>
+                        <font style="vertical-align: inherit;">
+                            <font style="vertical-align: inherit;">10 GB的存儲空間</font>
+                        </font>
+                    </li>
+                    <li>
+                        <font style="vertical-align: inherit;">
+                            <font style="vertical-align: inherit;">優先電子郵件支持</font>
+                        </font>
+                    </li>
+                    <li>
+                        <font style="vertical-align: inherit;">
+                            <font style="vertical-align: inherit;">幫助中心訪問</font>
+                        </font>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card mb-4 shadow-sm">
+            <div class="card-header">
+                <h4 class="my-0 font-weight-normal">
+                    <font style="vertical-align: inherit;">Rank</font>
+                </h4>
+            </div>
+            <div class="card-body">
+                <button type="button" id="VTNL" class="btn btn-lg btn-block btn-outline-success">
+                    <font style="vertical-align: inherit;">
+                        <font style="vertical-align: inherit;">View the newest leaderboards</font>
+                    </font>
+                </button>
+                <ul id="ul_3">
+                    <h1 class="card-title pricing-card-title">
+                        </font><small class="text-muted">
+                            <font style="vertical-align: inherit;">
+                                <font style="vertical-align: inherit;" size="4.5px">ranking / gamerName / Points</font>
+                            </font>
+                        </small>
+                    </h1>
+                    <li>
+                        <font style="vertical-align: inherit;">
+                            <font style="vertical-align: inherit;">包括30位用戶</font>
+                        </font>
+                    </li>
+                    <li>
+                        <font style="vertical-align: inherit;">
+                            <font style="vertical-align: inherit;">15 GB的存儲空間</font>
+                        </font>
+                    </li>
+                    <li>
+                        <font style="vertical-align: inherit;">
+                            <font style="vertical-align: inherit;">電話和電子郵件支持</font>
+                        </font>
+                    </li>
+                    <li>
+                        <font style="vertical-align: inherit;">
+                            <font style="vertical-align: inherit;">幫助中心訪問</font>
+                        </font>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--
     <div id="content">
         <div id="leftC">
             <img src="bulb.png" id="bulb"></img>
-            <button id="DoYouKnow">你知道嗎......</button>
-            <br>
+            <button id="DoYouKnow">Do You Know......</button><br>
             <ul>
                 <li>要畫一臺戰艦時，只要先畫一艘航空母艦，再把其餘部分擦掉就完成了。</li>
                 <li>誰能想的到，這名16歲環保少女，在四年前，竟只是一名12歲少女！</li>
@@ -34,7 +212,6 @@
                 <li>每個成功的工程師背後，都有一條彎曲的脊椎。</li>
                 <li>夜景很美麗吧？到了這時候，工程師們還在工作喔！</li>
             </ul>
-            
         </div>
         <div id="centerC">
             <p>
@@ -43,7 +220,62 @@
             </p>
         </div>
         <div id="rightC"></div>
-    </div>
-
+    </div>-->
+    <hr>
+    <footer class="container py-5">
+        <div class="row">
+            <div class="col-12 col-md">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor"
+                    stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="d-block mb-2" role="img"
+                    viewBox="0 0 24 24" focusable="false">
+                    <title>Product</title>
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <path
+                        d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83m13.79-4l-5.74 9.94">
+                    </path>
+                </svg>
+                <small class="d-block mb-3 text-muted">© 2017-2019</small>
+            </div>
+            <div class="col-6 col-md">
+                <h5>Features</h5>
+                <ul class="list-unstyled text-small">
+                    <li><a class="text-muted" href="#">Cool stuff</a></li>
+                    <li><a class="text-muted" href="#">Random feature</a></li>
+                    <li><a class="text-muted" href="#">Team feature</a></li>
+                    <li><a class="text-muted" href="#">Stuff for developers</a></li>
+                    <li><a class="text-muted" href="#">Another one</a></li>
+                    <li><a class="text-muted" href="#">Last time</a></li>
+                </ul>
+            </div>
+            <div class="col-6 col-md">
+                <h5>Resources</h5>
+                <ul class="list-unstyled text-small">
+                    <li><a class="text-muted" href="#">Resource</a></li>
+                    <li><a class="text-muted" href="#">Resource name</a></li>
+                    <li><a class="text-muted" href="#">Another resource</a></li>
+                    <li><a class="text-muted" href="#">Final resource</a></li>
+                </ul>
+            </div>
+            <div class="col-6 col-md">
+                <h5>Resources</h5>
+                <ul class="list-unstyled text-small">
+                    <li><a class="text-muted" href="#">Business</a></li>
+                    <li><a class="text-muted" href="#">Education</a></li>
+                    <li><a class="text-muted" href="#">Government</a></li>
+                    <li><a class="text-muted" href="#">Gaming</a></li>
+                </ul>
+            </div>
+            <div class="col-6 col-md">
+                <h5>About</h5>
+                <ul class="list-unstyled text-small">
+                    <li><a class="text-muted" href="#">Team</a></li>
+                    <li><a class="text-muted" href="#">Locations</a></li>
+                    <li><a class="text-muted" href="#">Privacy</a></li>
+                    <li><a class="text-muted" href="#">Terms</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
 </body>
+
 </html>
