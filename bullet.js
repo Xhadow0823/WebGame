@@ -1,6 +1,6 @@
 class Bullet {
     style = [urchin, squid, strawW, bottleG];
-    constructor(x, y, dir=1, belong=null, type=1){
+    constructor(x, y, dir=1, belong=null, type=0){
         this.bOffsetX = 0;  this.bOffsetY = 0;
         this.pos = createVector(x+this.bOffsetX, y+this.bOffsetY*dir);
         this.isOut = false;

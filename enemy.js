@@ -31,13 +31,18 @@ class EnemyCtrler{
     constructor(){
         this.Enemies = [];
         this.BC = BC;
+        this.world = WORLD;
     }
     instantiate(x, y){
         this.Enemies.push(new Enemy(x, y));
     }
     update(){
         for(let i = this.Enemies.length-1; i >= 0; i--){
-            if(this.Enemies[i].life>0 && this.Enemies[i].pos.y<=height){
+            if(this.Enemies[i].life>0){
+                if(this.Enemies[i].pos.y-this.Enemies[i].r>height){
+                    this.world.score--;
+                    continue;
+                }
                 this.Enemies[i].update();
                 this.BC.hitO(this.Enemies[i]);
             }else{
@@ -45,11 +50,6 @@ class EnemyCtrler{
                 console.log('DIE');
             }
         }
-        //tmp
-        this.Enemies.forEach((item,idx)=>{
-            item.update();
-            this.BC.hitO(item);
-        });
     }
     draw(){
         this.Enemies.forEach((item,idx)=>{

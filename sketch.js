@@ -22,20 +22,20 @@ function preload(){
     //TOOLS
 
     //ASSETS
-    bg = loadImage('starry-sky.jpg');
-    urchin = loadImage('sea_urchin.png');
-    squid = loadImage('squid.png');
-    plastic_bag = loadImage('plastic_bag.png');
-    strawW = loadImage('strawW.png');
-    bottleG = loadImage('plastic_bottleG.png');
-    turtleB = loadImage('turtle_back.png');
+    bg = loadImage('assets/starry-sky.jpg');
+    urchin = loadImage('assets/sea_urchin.png');
+    squid = loadImage('assets/squid.png');
+    plastic_bag = loadImage('assets/plastic_bag.png');
+    strawW = loadImage('assets/strawW.png');
+    bottleG = loadImage('assets/plastic_bottleG.png');
+    turtleB = loadImage('assets/turtle_back.png');
 }
 // END PRELOAD BLOCK
 
 function setup() {
-    createCanvas(windowWidth, windowHeight);
     story = new Story();loadStage();
     WORLD = new World();
+    createCanvas(WORLD.width, WORLD.height);
     BC = new BulletCtrler();
     EC = new EnemyCtrler();
     player = new Player(width/2, height/2);

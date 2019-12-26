@@ -3,8 +3,11 @@ class World{
     constructor(){
         this.state = 0;
         //0 : test,
+        this.width = 650;
+        this.height = 650;
         this.pause = false;
         this.bgSpeed = 2;
+        this.score = 0;
 
         this.ui = new UI;
         this.CHEAT = false;
@@ -36,13 +39,15 @@ class World{
         //this.ui.showDetail();
     }
     background(){
-        image(bg, 0, this.b1y, width, height);
-        image(bg, 0, this.b2y, width, height);
-        if(!this.pause){
-            this.b1y += this.bgSpeed;  this.b2y += this.bgSpeed;
-            if(this.b1y >= height){  this.b1y = -height;}
-            if(this.b2y >= height){  this.b2y = -height;}
-        }
+        push();
+            image(bg, 0, this.b1y, width, height);
+            image(bg, 0, this.b2y, width, height);
+            if(!this.pause){
+                this.b1y += this.bgSpeed;  this.b2y += this.bgSpeed;
+                if(this.b1y >= height){  this.b1y = -height;}
+                if(this.b2y >= height){  this.b2y = -height;}
+            }
+        pop();
     }
 }
 
