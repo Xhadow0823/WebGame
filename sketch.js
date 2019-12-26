@@ -10,7 +10,7 @@ let ey;
 
 let ret = false;
 
-// preload block
+// PRELOAD BLOCK
 let bg;
 let urchin;
 let squid;
@@ -56,26 +56,25 @@ function draw() {
         BC.hitO(player);
         BC.hitO(ey);
     }
+
+    //for test
     shape();
-
-    if(ret){
-        player.moveto(450, 200);
-    }else{
-        keyP();
-    }
-
     if (BC.hit(x + 25, y + 25, 25)) {
         console.log("HIT BOX");
     }
 
-
+    if(ret){
+        if(!player.moveto(450, 200)){  ret=false;}//for test
+    }else{
+        keyP();
+    }
 
     //draw block
     BC.draw();
     EC.draw();
-    ey.draw();
+    ey.draw();//for test
     player.draw();
-    WORLD.draw();  // on the most top
+    WORLD.draw();  // UI, on the most top
 }
 
 let x = 50;

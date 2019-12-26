@@ -2,14 +2,20 @@ class Enemy extends GameObject {
     constructor(x, y){
         super(x, y);
         this.fullLife = this.life = 5;
+        this.isOut = false;
         this.speed = 2;
 
         this.BC = BC;  //refference
-        
+        this.world = WORLD;
+        /////
         this.dc = 800;
         this.dccnt = 0;
     }
     update(){  //overload
+        if(this.pos.y+this.r > this.world.height){
+            this.isOut = true;
+            return;
+        }
         if(this.dccnt > this.dc){
             this.BC.shoot(this.pos.x, this.pos.y, 1, this.GOID);
             this.dccnt = 0;
@@ -38,16 +44,18 @@ class EnemyCtrler{
     }
     update(){
         for(let i = this.Enemies.length-1; i >= 0; i--){
-            if(this.Enemies[i].life>0){
-                if(this.Enemies[i].pos.y-this.Enemies[i].r>height){
-                    this.world.score--;
-                    continue;
-                }
-                this.Enemies[i].update();
-                this.BC.hitO(this.Enemies[i]);
-            }else{
+            if(this.Enemies[i].isOut){  // out of field
+                this.Enemies.splice(i, 1);
+                this.world.score--;
+                console.log('OUT');
+            }
+            else if(this.Enemies[i].life<=0){  //was killed
                 this.Enemies.splice(i, 1);
                 console.log('DIE');
+            }
+            else{
+                this.Enemies[i].update();
+                this.BC.hitO(this.Enemies[i]);
             }
         }
     }

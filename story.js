@@ -64,8 +64,33 @@ class Story{
 
 //let story = new Story();
 
-function loadStage(){
-story.addStage(new Stage());
+function loadStage(){  //was called in setup()
+story.addStage(new class{
+    instaned = false;
+    moved = false;
+
+    instan = [
+        {x:83, y:-100},
+        {x:166, y:-100},
+        {x:249, y:-100},
+        {x:332, y:-100}
+    ];
+    path = [
+        {x:250, y:1000},
+        {x:250, y:1000},
+        {x:250, y:1000},
+        {x:250, y:1000}
+    ]
+    
+    pass(){
+        // check ECaaaa
+        if(EC.Enemies.length == 0){
+            return true;
+        }else{
+            return false;
+        }
+    }
+});
 
 let gameover = false;
 story.addStage(new class{

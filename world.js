@@ -3,8 +3,9 @@ class World{
     constructor(){
         this.state = 0;
         //0 : test,
-        this.width = 650;
+        this.width = 500;
         this.height = 650;
+        
         this.pause = false;
         this.bgSpeed = 2;
         this.score = 0;
@@ -13,7 +14,7 @@ class World{
         this.CHEAT = false;
 
         /////
-        this.b1y = -height;
+        this.b1y = -this.height;
         this.b2y = 0;
     }
     initialize(){
@@ -40,12 +41,12 @@ class World{
     }
     background(){
         push();
-            image(bg, 0, this.b1y, width, height);
-            image(bg, 0, this.b2y, width, height);
+            image(bg, 0, this.b1y, this.width, this.height);
+            image(bg, 0, this.b2y, this.width, this.height);
             if(!this.pause){
                 this.b1y += this.bgSpeed;  this.b2y += this.bgSpeed;
-                if(this.b1y >= height){  this.b1y = -height;}
-                if(this.b2y >= height){  this.b2y = -height;}
+                if(this.b1y >= this.height){  this.b1y = -this.height;}
+                if(this.b2y >= this.height){  this.b2y = -this.height;}
             }
         pop();
     }
