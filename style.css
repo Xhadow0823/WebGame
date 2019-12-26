@@ -1,7 +1,7 @@
 html, body {
     margin: 0;
     padding: 0;
-    background-color: #55E6C1;
+    background-color: rgb(110, 103, 103);
     font-family: OCR-A, Arial;
 }
 
@@ -68,7 +68,12 @@ canvas {
     float: left;
 }
 
-#DoYouKnow{
-    float: left;
-    margin-top: 12px;
+#ul_1{
+    display: none;
+}
+#ul_2{
+    display: none;
+}
+#ul_3{
+    display: none;
 }
