@@ -39,7 +39,7 @@ function setup() {
     BC = new BulletCtrler();
     EC = new EnemyCtrler();
     player = new Player(width/2, height/2);
-    ey = new Enemy(200, 200);
+    //ey = new Enemy(200, 200);
 }
 
 function draw() {
@@ -51,17 +51,19 @@ function draw() {
         WORLD.update();
         BC.update();
         EC.update();
-        ey.update();
+        //ey.update();
         player.update();
         BC.hitO(player);
-        BC.hitO(ey);
+        //BC.hitO(ey);
     }
 
+    /*
     //for test
     shape();
     if (BC.hit(x + 25, y + 25, 25)) {
         console.log("HIT BOX");
     }
+    */
 
     if(ret){
         if(!player.moveto(450, 200)){  ret=false;}//for test
@@ -72,7 +74,7 @@ function draw() {
     //draw block
     BC.draw();
     EC.draw();
-    ey.draw();//for test
+    //ey.draw();//for test
     player.draw();
     WORLD.draw();  // UI, on the most top
 }

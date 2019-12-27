@@ -6,6 +6,7 @@ class GameObject {
 
         this.cate = 1;
         
+        this.world = WORLD;
         this.GOID = this.constructor.name.hashCode();
         this.speed = 3;
         this.r = 25;
@@ -26,6 +27,10 @@ class GameObject {
         pop();
     }
     move(x, y){
+        if(this.pos.y > this.world.height+this.r-7 && y>0) y=0;
+        if(this.pos.y < 0-this.r+7 && y<0) y=0;
+        if(this.pos.x > this.world.width+this.r-7 && x>0) x=0;
+        if(this.pos.x < 0-this.r+7 && x<0) x=0;
         this.pos.add(createVector(x, y).mult(this.speed));
     }
     moveto(x, y){  //return bool

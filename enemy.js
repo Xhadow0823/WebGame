@@ -1,23 +1,57 @@
 class Enemy extends GameObject {
-    constructor(x, y){
+    constructor(x, y, pType = 2){
         super(x, y);
+        this.cate = 0;  //overload
+
         this.fullLife = this.life = 5;
         this.isOut = false;
-        this.speed = 2;
+        this.speed = 0.8;
+        this.pType = pType;
+        this.bType = 3;  //bottle
 
         this.BC = BC;  //refference
         this.world = WORLD;
         /////
-        this.dc = 800;
+        this.dc = 1500;
         this.dccnt = 0;
     }
     update(){  //overload
-        if(this.pos.y+this.r > this.world.height){
+        if(this.pos.y-this.r > this.world.height){
             this.isOut = true;
             return;
         }
         if(this.dccnt > this.dc){
-            this.BC.shoot(this.pos.x, this.pos.y, 1, this.GOID);
+            switch(this.pType){
+                case 0:  // |
+                default:
+                    this.BC.shoot(this.pos.x, this.pos.y, 1, this.GOID, 90, this.bType);
+                    break;
+                case 1:  // /\
+                    this.BC.shoot(this.pos.x, this.pos.y, 1, this.GOID, 45, this.bType);
+                    this.BC.shoot(this.pos.x, this.pos.y, 1, this.GOID, 135, this.bType);
+                    break;
+                case 2:
+                    this.BC.shoot(this.pos.x, this.pos.y, 1, this.GOID, 45, this.bType);
+                    this.BC.shoot(this.pos.x, this.pos.y, 1, this.GOID, 90, this.bType);
+                    this.BC.shoot(this.pos.x, this.pos.y, 1, this.GOID, 135, this.bType);
+                    break;
+                case 3:  // \/ /\
+                    this.BC.shoot(this.pos.x, this.pos.y, 1, this.GOID, 45, this.bType);
+                    this.BC.shoot(this.pos.x, this.pos.y, 1, this.GOID, 135, this.bType);
+                    this.BC.shoot(this.pos.x, this.pos.y, -1, this.GOID, 45, this.bType);
+                    this.BC.shoot(this.pos.x, this.pos.y, -1, this.GOID, 135, this.bType);
+                    break;
+                case 4:  // \|/-\|/-
+                    this.BC.shoot(this.pos.x, this.pos.y, 1, this.GOID, 90, this.bType);
+                    this.BC.shoot(this.pos.x, this.pos.y, 1, this.GOID, 45, this.bType);
+                    this.BC.shoot(this.pos.x, this.pos.y, 1, this.GOID, 135, this.bType);
+                    this.BC.shoot(this.pos.x, this.pos.y, 0, this.GOID, 0, this.bType);
+                    this.BC.shoot(this.pos.x, this.pos.y, 0, this.GOID, 180, this.bType);
+                    this.BC.shoot(this.pos.x, this.pos.y, -1, this.GOID, 45, this.bType);
+                    this.BC.shoot(this.pos.x, this.pos.y, -1, this.GOID, 135, this.bType);
+                    this.BC.shoot(this.pos.x, this.pos.y, -1, this.GOID, 90, this.bType);
+                    break;
+            }
             this.dccnt = 0;
         }else{
             this.dccnt += deltaTime;

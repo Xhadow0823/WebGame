@@ -1,11 +1,12 @@
 class Bullet {
     style = [urchin, squid, strawW, bottleG];
-    constructor(x, y, dir=1, belong=null, type=0){
+    constructor(x, y, dir=1, belong=null, ang = 90, type=0){
         this.bOffsetX = 0;  this.bOffsetY = 0;
         this.pos = createVector(x+this.bOffsetX, y+this.bOffsetY*dir);
         this.isOut = false;
         this.forced = true;
-        this.dir = createVector(0, dir);
+        angleMode(DEGREES)
+        this.dir = createVector(cos(ang), dir);
         this.cate = 3;
         this.shape = 1;  //0:circle, 1:rect
 
@@ -38,10 +39,10 @@ class Bullet {
                 this.width = 10;  this.height = 240;
                 this.pos = createVector(x, y-120*dir);
                 break;
-            case 3:
+            case 3:  //bottle
                 this.cate = 3;
                 this.shape = 1;
-                this.width = 20;  this.height = 60;
+                this.width = 15;  this.height = 45;
                 this.rot = true;  this.rotSpeed = 3;  this.deg = (this.rot?randomGaussian(0,180):0);
                 this.pos = createVector(x, y);
                 break;
@@ -92,9 +93,9 @@ class BulletCtrler {
         this.Bullets = [];
         this.world = WORLD;
     }
-    shoot(x, y, dir=-1, belong=null){
+    shoot(x, y, dir=-1, belong=null, ang=90, btype=0){
         //appeend
-        this.Bullets.push(new Bullet(x,y, dir, belong));
+        this.Bullets.push(new Bullet(x,y, dir, belong, ang, btype));
     }
     clear(){
         this.Bullets = [];

@@ -64,27 +64,37 @@ class Story{
 
 //let story = new Story();
 
+
 function loadStage(){  //was called in setup()
 story.addStage(new class{
     instaned = false;
     moved = false;
 
     instan = [
-        {x:83, y:-100},
-        {x:166, y:-100},
-        {x:249, y:-100},
-        {x:332, y:-100}
+        {x:constrain(randomGaussian(250, 100),100, 400), y:-500},
+        {x:constrain(randomGaussian(250, 100),100, 400), y:-530},
+        {x:constrain(randomGaussian(250, 100),100, 400), y:-780},
+        {x:constrain(randomGaussian(250, 100),100, 400), y:-700},
+        {x:constrain(randomGaussian(250, 100),100, 400), y:-1200},
+        {x:constrain(randomGaussian(250, 100),100, 400), y:-1250},
+        {x:constrain(randomGaussian(250, 100),100, 400), y:-100},
+        {x:constrain(randomGaussian(250, 100),100, 400), y:-150}
     ];
     path = [
-        {x:250, y:1000},
-        {x:250, y:1000},
-        {x:250, y:1000},
-        {x:250, y:1000}
+        {x:500/3, y:1000},
+        {x:500/3*2, y:1000},
+        {x:500/3, y:1000},
+        {x:500/3*2, y:1000},
+        {x:500/3, y:1000},
+        {x:500/3*2, y:1000},
+        {x:500/3, y:1000},
+        {x:500/3*2, y:1000}
     ]
     
     pass(){
         // check ECaaaa
         if(EC.Enemies.length == 0){
+            console.log('score : ', player.life);
             return true;
         }else{
             return false;
