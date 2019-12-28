@@ -7,8 +7,11 @@ class Player extends GameObject{
         this.bType = 0;
         this.bMode = 0;
 
+        /////
         this.dc = 400;
         this.dccnt = 0;
+
+        this.bdccnt = 0;
     }
     update(){  //overload
         if(this.dccnt > this.dc){
@@ -28,5 +31,20 @@ class Player extends GameObject{
     }
     changeBMode(mode){
         this.bMode = mode;
+    }
+    getBuff(buff, time){
+        switch(buff){
+            case 0:  //get extra life
+            default:
+                this.life += 1;
+                break;
+            case 1:
+                break;
+        }
+        /*
+        setTimeout(()=>{
+            //this.dc = 1500;
+        }, time);
+        */
     }
 }
