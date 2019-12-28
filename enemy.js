@@ -1,5 +1,5 @@
 class Enemy extends GameObject {
-    constructor(x, y, pType = 2){
+    constructor(x, y, pType = 3){
         super(x, y);
         this.cate = 0;  //overload
 
@@ -30,7 +30,7 @@ class Enemy extends GameObject {
                     this.BC.shoot(this.pos.x, this.pos.y, 1, this.GOID, 45, this.bType);
                     this.BC.shoot(this.pos.x, this.pos.y, 1, this.GOID, 135, this.bType);
                     break;
-                case 2:
+                case 2:  // /|\
                     this.BC.shoot(this.pos.x, this.pos.y, 1, this.GOID, 45, this.bType);
                     this.BC.shoot(this.pos.x, this.pos.y, 1, this.GOID, 90, this.bType);
                     this.BC.shoot(this.pos.x, this.pos.y, 1, this.GOID, 135, this.bType);

@@ -41,6 +41,12 @@ class Story{
             this.stages[this.stage].instaned = true;
             console.log('instaned');
         }
+        if(!this.stages[this.stage].setBuff){
+            this.stages[this.stage].buffs.forEach((item)=>{
+                BFC.setBuff(item.x, item.y, item.type);
+            });
+            this.stages[this.stage].setBuff = true;
+        }
         if(!this.stages[this.stage].moved){
             let moved = true;
             for(let i = 0; i < EC.Enemies.length; i++){
@@ -69,6 +75,7 @@ function loadStage(){  //was called in setup()
 story.addStage(new class{
     instaned = false;
     moved = false;
+    setBuff = false;
 
     instan = [
         {x:constrain(randomGaussian(250, 100),100, 400), y:-500},
@@ -91,6 +98,13 @@ story.addStage(new class{
         {x:500/3*2, y:1000}
     ]
     
+    buffs = [
+        {x:250, y:-5000, type:0},
+        {x:250, y:-11500, type:3},
+        {x:250, y:-1300, type:4},
+        {x:250, y:-2000, type:2}
+    ]
+
     pass(){
         // check ECaaaa
         if(EC.Enemies.length == 0){
@@ -106,6 +120,7 @@ let gameover = false;
 story.addStage(new class{
     instaned = true;
     moved = true;
+    setBuff = true;
     pass(){
         //  infinity stage
         if(gameover===true){
@@ -120,6 +135,7 @@ story.addStage(new class{
 story.addStage(new class{
     instaned = true;
     moved = true;
+    setBuff = true;
     pass(){
         //  end stage
         //console.log('END');

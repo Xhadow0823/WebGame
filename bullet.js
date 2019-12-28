@@ -30,6 +30,7 @@ class Bullet {
             case 1:  //squid
                 this.cate = 1;
                 this.shape = 1;
+                this.forced = true;
                 this.width = 20;  this.height = 40;
                 this.pos = createVector(x, y+40*dir);
                 break;

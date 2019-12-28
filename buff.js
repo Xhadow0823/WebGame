@@ -1,7 +1,9 @@
 class BuffItem{
     style = [medicine];
-    constructor(x, y){
+    constructor(x, y, type){
         this.world = WORLD;
+
+        this.type = type;
 
         this.pos = createVector(x, y);
         this.r = 15;
@@ -29,8 +31,8 @@ class BuffCtrler{
         this.Buffs = [];
         this.world = WORLD;
     }
-    setBuff(x, y){
-        this.Buffs.push(new BuffItem(x, y));
+    setBuff(x, y, type=0){
+        this.Buffs.push(new BuffItem(x, y, type));
     }
     update(){
         for(let i = this.Buffs.length-1; i>=0; i--){
@@ -53,6 +55,7 @@ class BuffCtrler{
                 isHit = true;
                 item.isOut = true;
                 //do buff//////////
+                aobj.getBuff(item.type);
             }
         });
         return isHit;
