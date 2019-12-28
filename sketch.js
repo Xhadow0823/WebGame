@@ -12,6 +12,7 @@ let ey;
 let ret = false;
 
 // PRELOAD BLOCK
+//TX
 let bg;
 let urchin;
 let squid;
@@ -19,7 +20,20 @@ let plastic_bag;
 let strawW;
 let bottleG;
 let turtleB;
+let turtleF;
 let medicine;
+let kfh;
+//SE
+let BGM;
+let pauseSnd;
+let pauseEndSnd;
+let enemyDsty;
+let getBuffSnd;
+let addLifeSnd;
+let shoot1;
+let shoot2;
+let shoot3;
+let shoot4;
 function preload(){
     //TOOLS
 
@@ -31,11 +45,26 @@ function preload(){
     strawW = loadImage('assets/strawW.png');
     bottleG = loadImage('assets/plastic_bottleG.png');
     turtleB = loadImage('assets/turtle_back.png');
+    turtleF = loadImage('assets/turtle_front.png');
     medicine = loadImage('assets/medicine.png');
+    kfh = loadImage('assets/koreaFish.jpg');
+    //SE
+    //soundFormats('mp3');
+    BGM = loadSound('sounds/game_maoudamashii_8_piano01.mp3');
+    pauseSnd = loadSound('sounds/setPause.mp3');
+    pauseEndSnd = loadSound('sounds/pauseEnd.mp3');
+    enemyDsty = loadSound('sounds/enemyDestroied.mp3');
+    getBuffSnd = loadSound('sounds/getBuff2.mp3');
+    addLifeSnd = loadSound('sounds/addLife.mp3');
+    shoot1 = loadSound('sounds/shoot (1).mp3');
+    shoot2 = loadSound('sounds/shoot (2).mp3');
+    shoot3 = loadSound('sounds/shoot (3).mp3');
+    shoot4 = loadSound('sounds/shoot (4).mp3');
 }
 // END PRELOAD BLOCK
 
 function setup() {
+    BGM.loop();
     story = new Story();loadStage();
     WORLD = new World();
     createCanvas(WORLD.width, WORLD.height);

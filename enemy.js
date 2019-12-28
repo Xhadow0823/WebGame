@@ -85,6 +85,7 @@ class EnemyCtrler{
             }
             else if(this.Enemies[i].life<=0){  //was killed
                 this.Enemies.splice(i, 1);
+                enemyDsty.play();
                 console.log('DIE');
             }
             else{

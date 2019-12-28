@@ -1,5 +1,5 @@
 class GameObject {
-    style = [plastic_bag, turtleB];
+    style = [plastic_bag, turtleB, turtleF, kfh];
     constructor(x, y){
         this.pos = createVector(x, y);  //createVector(x, y);
         this.dir = 1;

@@ -1,4 +1,3 @@
-
 class World{
     constructor(){
         this.state = 0;
@@ -29,6 +28,13 @@ class World{
 
     changePause(){
         this.pause = !this.pause;
+        if(this.pause){
+            pauseSnd.play();
+            BGM.pause();
+        }else{
+            pauseEndSnd.play();
+            BGM.play();
+        }
     }
     update(){
         //pass

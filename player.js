@@ -17,6 +17,7 @@ class Player extends GameObject{
     }
     update(){  //overload
         if(this.dccnt > this.dc){
+            shoot4.play();
             switch(this.bMode){
                 case 0:
                 default:
@@ -39,6 +40,7 @@ class Player extends GameObject{
         this.bMode = mode;
     }
     getBuff(buff){
+        getBuffSnd.play();
         if(!this.inBuff){
             this.inBuff = true;
             this.logAtr();
@@ -48,6 +50,7 @@ class Player extends GameObject{
         switch(buff){
             case 0:  //get extra life
             default:
+                addLifeSnd.play();
                 this.life += 1;
                 break;
             case 1:  //straw btype
