@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Teko:700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Aladin&display=swap" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
         crossorigin="anonymous"></script>
@@ -20,7 +22,6 @@
     <script src="tools.js"></script>
     <script src="world.js"></script>
     <script src="bullet.js"></script>
-    <script src="buff.js"></script>
     <script src="gameObject.js"></script>
     <script src="player.js"></script>
     <script src="enemy.js"></script>
@@ -35,9 +36,17 @@
     <div id="displayer">
         <center>Something Wrong</center>
     </div>
-    <div id="GameName">
-        <h1><marquee behavior="alternate" scrollamount="60" direction="right">我還不射爆</marquee></h1>
+    <div id="GameName" style="font-family:Microsoft JhengHei;">
+            <marquee behavior="slide" scrollamount="60" direction="left">
+                <p class="shake">
+                    <img src="Fire.gif" style="width: 120px;height: 120px;"></img>
+                    我還不射爆
+                    <img src="Fire.gif" style="width: 120px;height: 120px;transform: scaleX(-1);"></img>
+                </p>
+            </marquee>
     </div>
+
+
     <div class="container d-flex flex-column flex-md-row justify-content-between">
         <a class="py-2" href="#" aria-label="Product">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor"
@@ -50,19 +59,15 @@
                 </path>
             </svg>
         </a>
-        <a class="py-2 d-none d-md-inline-block" href="#">Tour</a>
-        <a class="py-2 d-none d-md-inline-block" href="#">Product</a>
-        <a class="py-2 d-none d-md-inline-block" href="#">Features</a>
-        <a class="py-2 d-none d-md-inline-block" href="#">Enterprise</a>
-        <a class="py-2 d-none d-md-inline-block" href="#">Support</a>
-        <a class="py-2 d-none d-md-inline-block" href="#">Pricing</a>
-        <a class="py-2 d-none d-md-inline-block" href="#">Cart</a>
+        <a class="py-2 d-none d-md-inline-block" href="#">這邊</a>
+        <a class="py-2 d-none d-md-inline-block" href="#">其實沒用的話</a>
+        <a class="py-2 d-none d-md-inline-block" href="#">可以全砍</a>
     </div>
 
 
 
     <div class="card-deck mb-3 text-center">
-        <div class="card mb-4 shadow-sm">
+        <div class="card mb-4 shadow-sm" id="leftC">
             <div class="card-header">
                 <h4 class="my-0 font-weight-normal">
                     <font style="vertical-align: inherit;">
@@ -109,7 +114,7 @@
             </div>
         </div>
 
-        <div class="card mb-4 shadow-sm">
+        <div class="card mb-4 shadow-sm" id="centerC">
             <div class="card-header">
                 <h4 class="my-0 font-weight-normal">
                     <font style="vertical-align: inherit;">
@@ -157,7 +162,7 @@
             </div>
         </div>
 
-        <div class="card mb-4 shadow-sm">
+        <div class="card mb-4 shadow-sm" id="rightC">
             <div class="card-header">
                 <h4 class="my-0 font-weight-normal">
                     <font style="vertical-align: inherit;">Rank</font>
@@ -277,33 +282,36 @@
             </div>
         </div>
     </footer>-->
-      <nav class="navbar fixed-bottom navbar-expand-sm navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">Simple Function Navbar</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
+    <nav class="navbar fixed-bottom navbar-expand-sm navbar-dark bg-dark" style="font-family: 'Aladin', cursive;">
+        <a class="navbar-brand" href="#">The QQQ Simple Function Navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Back To Top</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-            </li>
-            <li class="nav-item dropup">
-              <a class="nav-link dropdown-toggle" href="#" id="dropdown10" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">References</a>
-              <div class="dropdown-menu" aria-labelledby="dropdown10">
-                <a class="dropdown-item" href="https://p5js.org/zh-Hans/libraries/" target="_blank">P5*js</a>
-                <a class="dropdown-item" href="https://getbootstrap.com/" target="_blank">Bootstrap</a>
-                <a class="dropdown-item" href="http://zh-tw.learnlayout.com/" target="_blank">Learn CSS Layout</a>
-              </div>
-            </li>
-          </ul>
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Back To Top</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                </li>
+                <li class="nav-item dropup">
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdown10" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">References</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdown10">
+                        <a class="dropdown-item" href="https://p5js.org/zh-Hans/libraries/" target="_blank">P5*js</a>
+                        <a class="dropdown-item" href="https://getbootstrap.com/" target="_blank">Bootstrap</a>
+                        <a class="dropdown-item" href="http://zh-tw.learnlayout.com/" target="_blank">Learn CSS
+                            Layout</a>
+                    </div>
+                </li>
+            </ul>
         </div>
-      </nav>
+    </nav>
 </body>
 
 </html>
