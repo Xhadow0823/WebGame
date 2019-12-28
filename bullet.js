@@ -6,7 +6,7 @@ class Bullet {
         this.isOut = false;
         this.forced = true;
         angleMode(DEGREES)
-        this.dir = createVector(cos(ang), dir);
+        this.dir = createVector(cos(ang), dir).normalize();
         this.cate = 3;
         this.shape = 1;  //0:circle, 1:rect
 

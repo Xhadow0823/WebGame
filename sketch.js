@@ -126,3 +126,16 @@ function keyPressed() {  //callback
         ret = !ret;
     }
 }
+/*
+<script src="p5.js"></script>
+<script src="p5.sound.min.js"></script>
+<script src="tools.js"></script>
+<script src="world.js"></script>
+<script src="bullet.js"></script>
+<script src="gameObject.js"></script>
+<script src="player.js"></script>
+<script src="enemy.js"></script>
+<script src="buff.js"></script>
+<script src="story.js"></script>
+<script src="sketch.js"></script>
+*/

@@ -1,5 +1,5 @@
 class Enemy extends GameObject {
-    constructor(x, y, pType = 3){
+    constructor(x, y, pType = 2){
         super(x, y);
         this.cate = 0;  //overload
 
