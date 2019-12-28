@@ -1,40 +1,64 @@
-html, body {
-    margin: 0;
-    padding: 0;
-    background-color: rgb(110, 103, 103);
-    font-family: OCR-A, Arial;
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: rgb(253, 177, 115);
+  font-family: OCR-A, Arial;
 }
 
 canvas {
-    position: absolute;
-    top: 0;
-    left: calc(50% - 250px);  //disable when debug
-    display: block;
+  position: absolute;
+  top: 0;
+  display: block;
 }
 #displayer {
-    width: 100%;
-    height: 650px;
-    display: block;
+  width: 90%;
+  margin: 0px auto;
+  height: 500px;
+  display: block;
+  background-color: cornsilk;
+  border: rgb(189, 53, 53) 4px dashed;
+  border-radius: 25px;
 }
 #GameName {
-    width: 100%;
-    color: azure;
-    border: black 1px solid;
+  width: 90%;
+  height: 128px;
+  margin: 0px auto;
+  background-color: blanchedalmond;
+  border: rgb(189, 53, 53) 5px double;
+  border-radius: 25px;
+  font-size: 50px;
 }
-#GameName h1 {
-    margin-left: 250px;
-
+@font-face {
+  font-family: "王漢宗粗鋼筆體";
+  src: url("WCL-07.ttf");
 }
-
+#GameName p {
+  margin-top: 7px;
+  margin-left: 70px;
+  font-family: "王漢宗粗鋼筆體";
+}
+#GameName p img {
+  margin-bottom: 45px;
+}
 
 #content {
-    border: brown 2px solid;
-    display: block;
-    margin: 50px;
-    overflow: auto;
-    margin-top: 25px;
+  border: brown 2px solid;
+  display: block;
+  margin: 50px;
+  overflow: auto;
+  margin-top: 25px;
 }
-
+#leftC {
+  font-family: "Teko", sans-serif;
+}
+#centerC {
+  font-family: "Teko", sans-serif;
+}
+#rightC {
+  font-family: "Teko", sans-serif;
+}
+/*
 #content #leftC {
     display: block;
     float: left;
@@ -61,24 +85,63 @@ canvas {
     height: 500px;
     background-color: blueviolet;
     box-sizing: border-box;
+}*/
+
+#bulb {
+  width: 50px;
+  height: 50px;
+  float: left;
 }
 
-#bulb{
-    width:50px;
-    height:50px;
-    float: left;
+#ul_1 {
+  display: none;
 }
-
-#ul_1{
-    display: none;
+#ul_2 {
+  display: none;
 }
-#ul_2{
-    display: none;
+#ul_3 {
+  display: none;
 }
-#ul_3{
-    display: none;
+@-webkit-keyframes shake {
+  0% {
+    -webkit-transform: translate(1px, 1px);
+  }
+  25% {
+    -webkit-transform: translate(-0.5px, -0.5px);
+  }
+  50% {
+    -webkit-transform: translate(0px, 0px);
+  }
+  75% {
+    -webkit-transform: translate(1px, -0.5px);
+  }
+  100% {
+    -webkit-transform: translate(-0.5px, 1px);
+  }
 }
-
-#GameName{
-    background-color: black;
+@keyframes shake {
+  0% {
+    transform: translate(1px, 1px);
+  }
+  25% {
+    transform: translate(-0.5px, -0.5px);
+  }
+  50% {
+    transform: translate(0px, 0px);
+  }
+  75% {
+    transform: translate(1px, -0.5px);
+  }
+  100% {
+    transform: translate(-0.5px, 1px);
+  }
+}
+.shake {
+  position: relative;
+  width: 40px;
+  color: rgb(0, 0, 0);
+}
+.shake {
+  -webkit-animation: shake 0.5s infinite;
+  animation: shake 0.5s infinite;
 }
