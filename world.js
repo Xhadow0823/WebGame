@@ -6,12 +6,14 @@ class World{
         this.height = 650;
         
         this.pause = false;
+        this.mute = false;
         this.bgSpeed = 2;
         this.score = 0;
 
         this.ui = new UI;
         this.CHEAT = false;
 
+        this.cheatCnt = 0;
         /////
         this.b1y = -this.height;
         this.b2y = 0;
@@ -36,14 +38,32 @@ class World{
             BGM.play();
         }
     }
+    cheatMode(k){
+        switch(this.cheatCnt){
+            case 0:
+                if(k==67)this.cheatCnt++;
+                break;
+            case 1:
+                if(k==72)this.cheatCnt++;
+                break;
+            case 2:
+                if(k==69)this.cheatCnt++;
+                break;
+            case 3:
+                if(k==65)this.cheatCnt++;
+                break;
+            case 4:
+                if(k==84)this.CHEAT = true;
+                break;
+        }
+    }
     update(){
         //pass
         story.updateStage();
     }
     draw(){
+        this.ui.showDetail();
         this.ui.showPause(this.pause);
-        this.ui.showCHEAT(this.pause);
-        //this.ui.showDetail();
     }
     background(){
         push();
@@ -60,7 +80,7 @@ class World{
 
 class UI{
     constructor(){
-
+        
     }
     draw(){
 
@@ -77,16 +97,21 @@ class UI{
             rect(baseX-size/2+size*.6, baseY-size/2, size*.4, size);
         }
     }
-    showCHEAT(){
-        text("CHEAT", width/2+50, height/2);
-    }
-    showDetail(){
-        let dw = 100;
-        let dh = 300;
-        let baseX = 0;  //width-dw;
-        let baseY = height-dh;
-        fill(200, 150);
-        rect(baseX, baseY, dw, dh);
-        //text(content, baseX, baseY+25);
+    showDetail(){  //title display
+        push();
+        fill(255);
+        let offX = 45;
+        text("LIVES ", 5, 15);
+        for(let i = 0; i < player.life; i++){
+            rect(offX, 5, 10, 10);
+            offX += 15;
+        }
+        if(player.inBuff){
+            text("BUFF", 5, 30);
+        }
+        if(WORLD.CHEAT){
+            text("CHEAT MODE", 5, 45);
+        }
+        pop();
     }
 }

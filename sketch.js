@@ -153,6 +153,17 @@ function keyPressed() {  //callback
     }
     else if(keyCode === 71){
         ret = !ret;
+    }else if(keyCode === 77){
+        WORLD.mute = !WORLD.mute;
+        if(WORLD.mute){
+            console.log('mute');
+        }
+    }else if(  keyCode === 67 
+            || keyCode === 72
+            || keyCode === 69
+            || keyCode === 65
+            || keyCode === 84){
+        WORLD.cheatMode(keyCode);
     }
 }
 /*

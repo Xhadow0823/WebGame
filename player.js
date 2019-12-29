@@ -2,10 +2,12 @@ class Player extends GameObject{
     constructor(x, y){
         super(x, y);
 
+        this.fullLife = this.life = 5;  //overload
         this.dir = -1;
         this.BC = BC;
         this.bType = 0;
         this.bMode = 0;
+
 
         /////
         this.dc = 400;
@@ -35,9 +37,7 @@ class Player extends GameObject{
         }else{
             this.dccnt += deltaTime;
         }
-    }
-    changeBMode(mode){
-        this.bMode = mode;
+        //if(random(0, 10000)>9900){  this.cate = 3-this.cate;}
     }
     getBuff(buff){
         getBuffSnd.play();
@@ -52,6 +52,7 @@ class Player extends GameObject{
             default:
                 addLifeSnd.play();
                 this.life += 1;
+                this.inBuff = false;
                 break;
             case 1:  //straw btype
                 this.bType = 2;
@@ -100,6 +101,7 @@ class Player extends GameObject{
             this.dc = old_dc;
             this.speed = old_speed;
             this.r = old_r;
+            this.inBuff = false;
         }
         this.resetAtr = reset;
     }
