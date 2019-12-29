@@ -5,7 +5,7 @@ function renewCell(name, ext='png'){
     }else{
         let ht = `
         <div class="cell" id="${name}">
-            <img src="QM.png" alt="${name}.${ext}Image">
+            <img src="QM.png" alt="${name}.${ext}Image" class="popup">
             <span class="cell-name" alt="${name}">???</span>
         </div>`;
         $('#illu').append(ht);
@@ -36,3 +36,19 @@ function reveal(name){
         $(`#${name} span`).attr('alt'));
     }
 }
+
+// POPUP////////////
+$(function () {
+    "use strict";
+    
+    $(".popup").click(function () {
+        var $src = $(this).attr("src");
+        $(".show").fadeIn();
+        $(".img-show img").attr("src", $src);
+    });
+    
+    $("span, .overlay").click(function () {
+        $(".show").fadeOut();
+    });
+    
+});
