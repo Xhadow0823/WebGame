@@ -69,7 +69,8 @@ function setup() {
     BGM.loop();
     story = new Story();loadStage();
     WORLD = new World();
-    createCanvas(WORLD.width, WORLD.height);
+    var canvas = createCanvas(WORLD.width, WORLD.height);
+    canvas.parent('game-holder');
     BC = new BulletCtrler();
     EC = new EnemyCtrler();
     player = new Player(width/2, height/2);

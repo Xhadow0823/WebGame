@@ -10,20 +10,29 @@ function renewCell(name, ext='png'){
         </div>`;
         $('#illu').append(ht);
     }
+    
     return $('#'+name);
 }
 
-function addP(){
-    let name = ($('#nInput').val()==''?'QM':$('#nInput').val());
-    renewCell(name);
-}
-
-$(document).ready(()=>{
+$(()=>{
     renewCell('hodara', 'jpg');
     renewCell('how_dare_you', 'gif');
     renewCell('KF', 'jpg');
     renewCell('korea_fish', 'jpg');
     renewCell('ode', 'jpg');
+    //POPUP/////
+    var modal = document.getElementById("myModal");
+    var modalImg = document.getElementById("img01");
+    var captionText = document.getElementById("caption");
+    $(".popup").click(function(){
+        modal.style.display = "block";
+        modalImg.src = this.src;
+        captionText.innerHTML = this.alt.slice(0, -9);
+    });
+    var span = document.getElementsByClassName("close")[0];
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
 });
 
 function reveal(name){
@@ -36,19 +45,3 @@ function reveal(name){
         $(`#${name} span`).attr('alt'));
     }
 }
-
-// POPUP////////////
-$(function () {
-    "use strict";
-    
-    $(".popup").click(function () {
-        var $src = $(this).attr("src");
-        $(".show").fadeIn();
-        $(".img-show img").attr("src", $src);
-    });
-    
-    $("span, .overlay").click(function () {
-        $(".show").fadeOut();
-    });
-    
-});
