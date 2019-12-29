@@ -1,35 +1,10 @@
-class Stage{
-    instaned = false;
-    moved = false;
-
-    instan = [
-        {x:400, y:-870},
-        {x:550, y:-870},
-        {x:650, y:-870},
-        {x:800, y:-870}
-    ];
-    path = [
-        {x:400, y:650},
-        {x:550, y:660},
-        {x:650, y:640},
-        {x:800, y:630}
-    ]
-    
-    pass(){
-        // check ECaaaa
-        if(EC.Enemies.length == 0){
-            return true;
-        }else{
-            return false;
-        }
-    }
-}
-
 class Story{
     constructor(){
         this.stages = [];
-        this.stage = 0;
+        this.stage = 2;
 
+        this.infinityMode = false;
+        this.score = 0;
         /////
         this.stageOpc = 255;
     }
@@ -37,11 +12,16 @@ class Story{
         // if fullfill this stage
         // then goto next stage
         this.showStageN();
+
+        if(this.stages[this.stage].isInfinity===true){
+            this.stages[this.stage].update();
+            return;
+        }
         
         if(!this.stages[this.stage].instaned){
             this.stageOpc = 255;
             this.stages[this.stage].instan.forEach((item, idx)=>{
-                EC.instantiate(item.x, item.y);
+                EC.instantiate(item.x, item.y, item.type);
             });
             this.stages[this.stage].instaned = true;
             console.log('instaned');
@@ -68,8 +48,8 @@ class Story{
     addStage(newstage){
         this.stages.push(newstage);
     }
-    gotoStage(){
-        //pass
+    gotoStage(s){
+        this.Stage = s;
     }
     showStageN(){
         push();
@@ -77,7 +57,7 @@ class Story{
             fill(255, this.stageOpc--);
             textAlign(CENTER);
             textSize(64);
-            text('Stage'+(this.stage+1), 250, 150);
+            text('Stage'+(this.stages[this.stage].name), 250, 150);
         }
         pop();
     }
@@ -87,10 +67,11 @@ class Story{
 
 
 function loadStage(){  //be called in setup()
-story.addStage(new class{
+story.addStage(new class{  //Stage1
     instaned = false;
     moved = false;
     setBuff = false;
+    name = "1";
 
     instan = [
         {x:constrain(randomGaussian(250, 100),100, 400), y:-500, type:1},
@@ -130,10 +111,11 @@ story.addStage(new class{
         }
     }
 });
-story.addStage(new class{
+story.addStage(new class{  //Stage2
     instaned = false;
     moved = false;
     setBuff = false;
+    name = "2";
 
     instan = [
         {x:constrain(randomGaussian(250, 100),100, 400), y:-500, type:3},
@@ -163,6 +145,63 @@ story.addStage(new class{
         }else{
             return false;
         }
+    }
+});
+
+story.addStage(new class{  //Stage ∞ 
+    instaned = true;
+    moved = true;
+    setBuff = true;
+    init = false;
+    isInfinity = true;//////////
+    name = " ∞ ";
+
+    ///////////////////////
+    dc = 5000;
+    dccnt = 0;
+    iLimit = 2;
+    bLimit = 2;
+    infInit(){
+        player.fullLife = player.life = 9;
+        story.infinityMode = true;
+        this.init = true;
+    }
+    update(){
+        if(!this.init){
+            this.infInit();
+        }
+        if(this.dccnt >= this.dc){
+            console.log('OP');
+            //do something
+            let ri = random(1, this.iLimit);
+            for(let i = 0; i < ri; i++){
+                let item = {x:constrain(randomGaussian(250, 100),100, 400),
+                            y:-constrain(randomGaussian(100, 100),10, 500),
+                            type:floor(random(5))};
+                EC.instantiate(item.x, item.y, item.type);
+            }
+            let rb = random(1, this.bLimit);
+            for(let i = 0; i < rb; i++){
+                let item = {x:constrain(randomGaussian(250, 100),50, 450),
+                            y:-constrain(randomGaussian(1000, 900),10, 5000),
+                            type:floor(random(0, 6))};
+                BFC.setBuff(item.x, item.y, item.type);
+            }
+            // if() then add limit
+
+            this.dccnt = 0;
+
+        }
+        this.dccnt += deltaTime;
+        EC.Enemies.forEach((item)=>{
+            item.moveto(500/3*floor(random(1, 3)),
+                        1000);
+        })
+    }
+
+    pass(){
+        // check ECaaaa
+        return false;
     }
 });
 

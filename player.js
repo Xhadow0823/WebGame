@@ -3,12 +3,15 @@ class Player extends GameObject{
         super(x, y);
 
         this.fullLife = this.life = 5;  //overload
+        this.speed = 2.5;  //overload  //must bigger than 2
         this.dir = -1;
         this.BC = BC;
         this.bType = 0;
         this.bMode = 0;
-
-
+        
+        this.nHurt = false;
+        this.nhcd = 800;
+        this.nhcnt = 0;
         /////
         this.dc = 400;
         this.dccnt = 0;
@@ -39,6 +42,11 @@ class Player extends GameObject{
             this.dccnt = 0;
         }else{
             this.dccnt += deltaTime;
+        }
+        if(this.nhcnt > this.nhcd){
+            this.nHurt = false;
+        }else{
+            this.nhcnt+=deltaTime;
         }
         //if(random(0, 10000)>9900){  this.cate = 3-this.cate;}
     }
@@ -109,4 +117,11 @@ class Player extends GameObject{
         this.resetAtr = reset;
     }
     resetAtr = null;
+    hurt(){  //overload
+        if(!this.nHurt){
+            super.hurt();
+            this.nHurt = true;
+            this.nhcnt = 0;
+        }
+    }
 }

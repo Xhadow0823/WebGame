@@ -41,6 +41,14 @@ class World{
             BGM.play();
         }
     }
+    changeMute(){
+        this.mute = !this.mute;
+        if(this.mute){
+            BGM.setVolume(0);
+        }else{
+            BGM.setVolume(1);
+        }
+    }
     cheatMode(k){
         switch(this.cheatCnt){
             case 0:
@@ -119,6 +127,9 @@ class UI{
             fill(255);
             rect(baseX-size/2, baseY-size/2, size*.4, size);
             rect(baseX-size/2+size*.6, baseY-size/2, size*.4, size);
+            if(WORLD.mute){
+                image(muteS, 425, 575, 50, 50);
+            }
         }
     }
     showDetail(){  //title display
@@ -135,6 +146,11 @@ class UI{
         }
         if(WORLD.CHEAT){
             text("CHEAT MODE", 5, 45);
+        }
+        if(story.infinityMode){
+            console.log("LL");
+            textAlign(RIGHT, TOP);
+            text(`SCORE: ${story.score}`, 495, 5);
         }
         pop();
     }

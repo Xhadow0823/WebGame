@@ -9,6 +9,7 @@ class Bullet {
         this.dir = createVector(cos(ang), dir).normalize();
         this.cate = 3;
         this.shape = 1;  //0:circle, 1:rect
+        this.nHit = false;
 
         this.rot = false;
         this.rotSpeed = 3;
@@ -39,6 +40,7 @@ class Bullet {
                 this.cate = 2;
                 this.shape = 1;
                 this.width = 10;  this.height = 240;
+                this.nHit = true;
                 this.pos = createVector(x, y-120*dir);
                 break;
             case 3:  //bottle
@@ -55,10 +57,16 @@ class Bullet {
     }
     update(){
         // check isOut
-        if((this.pos.x<0-this.r||this.pos.x>width+this.r)||
-        (this.pos.y<0-this.r||this.pos.y>height+this.r)){
+        if(this.shape){
+            if((this.pos.x<0-this.width/2||this.pos.x>width+this.width/2)||
+            (this.pos.y<0-this.height/2||this.pos.y>height+this.height/2)){
+                this.isOut = true;
+            }    
+        }else if((this.pos.x<0-this.r||this.pos.x>width+this.r)||
+            (this.pos.y<0-this.r||this.pos.y>height+this.r)){
             this.isOut = true;
-        }else{
+        }
+        if(!this.isOut){
             // renew the pos
             this.pos.add(this.dir.copy().mult(this.speed));
         }
@@ -140,7 +148,9 @@ class BulletCtrler {
                 if(p5.Vector.dist(item.pos,aobj.pos)<=item.r+aobj.r
                 && (aobj.GOID!=item.belong||item.belong==null)){
                     isHit = true;
-                    item.isOut = true;
+                    if(!item.nHit){
+                        item.isOut = true;
+                    }
                     aobj.hurt();
                     //console.log('HIT at : ', item.pos.x, item.pos.y);
                 }
@@ -153,13 +163,17 @@ class BulletCtrler {
 
                 if(dx <= (item.width/2) && (aobj.GOID!=item.belong||item.belong==null)){
                     isHit = true;
-                    item.isOut = true;
+                    if(!item.nHit){
+                        item.isOut = true;
+                    }
                     aobj.hurt();
                     return ;
                 }
                 if(dy <= (item.height/2) && (aobj.GOID!=item.belong||item.belong==null)){
                     isHit = true;
-                    item.isOut = true;
+                    if(!item.nHit){
+                        item.isOut = true;
+                    }
                     aobj.hurt();
                     return ;
                 }
@@ -168,7 +182,9 @@ class BulletCtrler {
                              pow(dy - item.height/2, 2);
                 if(cor_sq <= pow(aobj.r,2) && (aobj.GOID!=item.belong||item.belong==null)){
                     isHit = true;
-                    item.isOut = true;
+                    if(!item.nHit){
+                        item.isOut = true;
+                    }
                     aobj.hurt();
                     return;
                 }

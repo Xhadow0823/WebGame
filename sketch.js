@@ -23,6 +23,7 @@ let turtleB;
 let turtleF;
 let medicine;
 let kfh;
+let muteS;
 //SE
 let BGM;
 let pauseSnd;
@@ -48,6 +49,7 @@ function preload(){
     turtleF = loadImage('assets/turtle_front.png');
     medicine = loadImage('assets/medicine.png');
     kfh = loadImage('assets/koreaFish.jpg');
+    muteS = loadImage('assets/mute.png');
     //SE
     //soundFormats('mp3');
     BGM = loadSound('sounds/game_maoudamashii_8_piano01.mp3');
@@ -65,7 +67,6 @@ function preload(){
 
 function setup() {
     BGM.loop();
-    BGM.setVolume(0);
     story = new Story();loadStage();
     WORLD = new World();
     createCanvas(WORLD.width, WORLD.height);
@@ -93,16 +94,8 @@ function draw() {
         //BC.hitO(ey);
     }
 
-    /*
-    //for test
-    shape();
-    if (BC.hit(x + 25, y + 25, 25)) {
-        console.log("HIT BOX");
-    }
-    */
-
     if(ret){
-        if(!player.moveto(450, 200)){  ret=false;}//for test
+        if(!player.moveto(250, 400)){  ret=false;}//for test
     }else{
         keyP();
     }
@@ -111,20 +104,12 @@ function draw() {
     BC.draw();
     EC.draw();
     BFC.draw();
-    //ey.draw();//for test
     player.draw();
     WORLD.draw();  // UI, on the most top
 }
 
-let x = 50;
-let y = 50;
-function shape() {
-    fill(255);
-    rect(x, y, 50, 50);
-}
-
 function mouseClicked() {
-    BC.shoot(mouseX, mouseY);
+    BC.shoot(mouseX, mouseY, 2);
     //EC.instantiate(mouseX, mouseY);
     WORLD.update(mouseX, mouseY);
 }
@@ -153,10 +138,10 @@ function keyPressed() {  //callback
             console.log('ZA WARUDO');
         }
     }
-    else if(keyCode === 71){
+    else if(keyCode === 71){  //ESC
         ret = !ret;
-    }else if(keyCode === 77){
-        WORLD.mute = !WORLD.mute;
+    }else if(keyCode === 77){  //M
+        WORLD.changeMute();
         if(WORLD.mute){
             console.log('mute');
         }

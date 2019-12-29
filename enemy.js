@@ -73,7 +73,7 @@ class EnemyCtrler{
         this.BC = BC;
         this.world = WORLD;
     }
-    instantiate(x, y){
+    instantiate(x, y, type){
         this.Enemies.push(new Enemy(x, y));
     }
     update(){
@@ -81,11 +81,17 @@ class EnemyCtrler{
             if(this.Enemies[i].isOut){  // out of field
                 this.Enemies.splice(i, 1);
                 this.world.score--;
+                if(story.infinityMode){
+                    story.score-=10;
+                }
                 console.log('OUT');
             }
             else if(this.Enemies[i].life<=0){  //was killed
                 this.Enemies.splice(i, 1);
                 enemyDsty.play();
+                if(story.infinityMode){
+                    story.score+=10;
+                }
                 console.log('DIE');
             }
             else{
