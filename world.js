@@ -1,7 +1,8 @@
 class World{
     constructor(){
-        this.state = 0;
-        //0 : test,
+        this.state = 0;  //0:init
+        this.diff = 0;  //0:easy, 1 hard
+
         this.width = 500;
         this.height = 650;
         
@@ -13,13 +14,12 @@ class World{
         this.ui = new UI;
         this.CHEAT = false;
 
+        /////
         this.cheatCnt = 0;
+        this.stageOpc = 255;
         /////
         this.b1y = -this.height;
         this.b2y = 0;
-    }
-    initialize(){
-
     }
     updateState(){
 
@@ -28,6 +28,9 @@ class World{
         this.state = st;
     }
 
+    initGame(){
+        player.fullLife = player.life = (this.diff?1:5);
+    }
     changePause(){
         this.pause = !this.pause;
         if(this.pause){
@@ -57,13 +60,34 @@ class World{
                 break;
         }
     }
-    update(){
-        //pass
-        story.updateStage();
+    update(mx, my){
+        if(this.state === 0){
+            if(mx>250-60 && mx<250+60
+                && my>440-20 && my<490+20){
+                if(my<440+20){
+                    // click start
+                    console.log('start');
+                    this.initGame();
+                    this.state = 1;
+                }else if(my>490-20){
+                    this.diff = 1 - this.diff;
+                }
+            }
+        }
+        switch(this.state){
+            case 0:
+                
+                break;
+            case 1:
+                story.updateStage();
+        }
     }
     draw(){
         this.ui.showDetail();
         this.ui.showPause(this.pause);
+        if(this.state === 0){
+            this.ui.initM();
+        }
     }
     background(){
         push();
@@ -112,6 +136,28 @@ class UI{
         if(WORLD.CHEAT){
             text("CHEAT MODE", 5, 45);
         }
+        pop();
+    }
+    initM(){
+        push();
+        fill(155);
+        textSize(32);
+        textAlign(CENTER);
+        rectMode(CENTER);
+
+        rect(250, 325, 500, 650);
+
+        fill('red');
+        rect(250, 440, 120, 40);
+
+        fill('white');
+        text('Start', 250, 450);
+
+        fill('red');
+        rect(250, 490, 120, 40);
+
+        fill('white');
+        text((WORLD.diff?'Hard':'Easy'), 250, 500);
         pop();
     }
 }

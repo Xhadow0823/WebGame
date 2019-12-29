@@ -65,6 +65,7 @@ function preload(){
 
 function setup() {
     BGM.loop();
+    BGM.setVolume(0);
     story = new Story();loadStage();
     WORLD = new World();
     createCanvas(WORLD.width, WORLD.height);
@@ -125,6 +126,7 @@ function shape() {
 function mouseClicked() {
     BC.shoot(mouseX, mouseY);
     //EC.instantiate(mouseX, mouseY);
+    WORLD.update(mouseX, mouseY);
 }
 
 function keyP() {

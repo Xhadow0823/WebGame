@@ -25,6 +25,7 @@ class Bullet {
                 this.shape = 0;
                 this.r = 15;
                 this.rot = true;  this.rotSpeed = 3;
+                this.deg = (this.rot?randomGaussian(0,180):0);
                 this.pos = createVector(x, y);
                 break;
             case 1:  //squid
@@ -44,7 +45,8 @@ class Bullet {
                 this.cate = 3;
                 this.shape = 1;
                 this.width = 15;  this.height = 45;
-                this.rot = true;  this.rotSpeed = 3;  this.deg = (this.rot?randomGaussian(0,180):0);
+                this.rot = true;  this.rotSpeed = 3;
+                this.deg = (this.rot?randomGaussian(0,180):0);
                 this.pos = createVector(x, y);
                 break;
             case 4:

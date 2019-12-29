@@ -29,12 +29,17 @@ class Story{
     constructor(){
         this.stages = [];
         this.stage = 0;
+
+        /////
+        this.stageOpc = 255;
     }
     updateStage(){
         // if fullfill this stage
         // then goto next stage
+        this.showStageN();
         
         if(!this.stages[this.stage].instaned){
+            this.stageOpc = 255;
             this.stages[this.stage].instan.forEach((item, idx)=>{
                 EC.instantiate(item.x, item.y);
             });
@@ -66,26 +71,36 @@ class Story{
     gotoStage(){
         //pass
     }
+    showStageN(){
+        push();
+        if(this.stageOpc>0){
+            fill(255, this.stageOpc--);
+            textAlign(CENTER);
+            textSize(64);
+            text('Stage'+(this.stage+1), 250, 150);
+        }
+        pop();
+    }
 }
 
 //let story = new Story();
 
 
-function loadStage(){  //was called in setup()
+function loadStage(){  //be called in setup()
 story.addStage(new class{
     instaned = false;
     moved = false;
     setBuff = false;
 
     instan = [
-        {x:constrain(randomGaussian(250, 100),100, 400), y:-500},
-        {x:constrain(randomGaussian(250, 100),100, 400), y:-530},
-        {x:constrain(randomGaussian(250, 100),100, 400), y:-780},
-        {x:constrain(randomGaussian(250, 100),100, 400), y:-700},
-        {x:constrain(randomGaussian(250, 100),100, 400), y:-1200},
-        {x:constrain(randomGaussian(250, 100),100, 400), y:-1250},
-        {x:constrain(randomGaussian(250, 100),100, 400), y:-100},
-        {x:constrain(randomGaussian(250, 100),100, 400), y:-150}
+        {x:constrain(randomGaussian(250, 100),100, 400), y:-500, type:1},
+        {x:constrain(randomGaussian(250, 100),100, 400), y:-530, type:1},
+        {x:constrain(randomGaussian(250, 100),100, 400), y:-780, type:2},
+        {x:constrain(randomGaussian(250, 100),100, 400), y:-700, type:1},
+        {x:constrain(randomGaussian(250, 100),100, 400), y:-1200, type:1},
+        {x:constrain(randomGaussian(250, 100),100, 400), y:-1250, type:2},
+        {x:constrain(randomGaussian(250, 100),100, 400), y:-100, type:2},
+        {x:constrain(randomGaussian(250, 100),100, 400), y:-150, type:1}
     ];
     path = [
         {x:500/3, y:1000},
@@ -99,10 +114,45 @@ story.addStage(new class{
     ]
     
     buffs = [
-        {x:250, y:-5000, type:0},
-        {x:250, y:-11500, type:3},
-        {x:250, y:-1300, type:4},
-        {x:250, y:-2000, type:2}
+        {x:constrain(randomGaussian(250, 100),50, 450), y:-5000, type:0},
+        {x:constrain(randomGaussian(250, 100),50, 450), y:-11000, type:3},
+        {x:constrain(randomGaussian(250, 100),50, 450), y:-1300, type:4},
+        {x:constrain(randomGaussian(250, 100),50, 450), y:-2000, type:2}
+    ]
+
+    pass(){
+        // check ECaaaa
+        if(EC.Enemies.length == 0){
+            console.log('score : ', player.life);
+            return true;
+        }else{
+            return false;
+        }
+    }
+});
+story.addStage(new class{
+    instaned = false;
+    moved = false;
+    setBuff = false;
+
+    instan = [
+        {x:constrain(randomGaussian(250, 100),100, 400), y:-500, type:3},
+        {x:constrain(randomGaussian(250, 100),100, 400), y:-530, type:4},
+        {x:constrain(randomGaussian(250, 100),100, 400), y:-120, type:3},
+        {x:constrain(randomGaussian(250, 100),100, 400), y:-150, type:3}
+    ];
+    path = [
+        {x:500/3, y:1000},
+        {x:500/3*2, y:1000},
+        {x:500/3, y:1000},
+        {x:500/3*2, y:1000}
+    ]
+    
+    buffs = [
+        {x:constrain(randomGaussian(250, 100),50, 450), y:-5000, type:0},
+        {x:constrain(randomGaussian(250, 100),50, 450), y:-11000, type:1},
+        {x:constrain(randomGaussian(250, 100),50, 450), y:-1300, type:4},
+        {x:constrain(randomGaussian(250, 100),50, 450), y:-2000, type:2}
     ]
 
     pass(){
@@ -142,4 +192,4 @@ story.addStage(new class{
         return false;
     }
 });
-}
+}  //loadStage() end
