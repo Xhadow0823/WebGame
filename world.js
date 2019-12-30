@@ -101,6 +101,7 @@ class World{
         push();
             image(bg, 0, this.b1y, this.width, this.height);
             image(bg, 0, this.b2y, this.width, this.height);
+            image(ll, 0, 0, this.width, this.height);
             if(!this.pause){
                 this.b1y += this.bgSpeed;  this.b2y += this.bgSpeed;
                 if(this.b1y >= this.height){  this.b1y = -this.height;}
@@ -134,13 +135,15 @@ class UI{
     }
     showDetail(){  //title display
         push();
-        fill(255);
+        fill('navy');
         let offX = 45;
         text("LIVES ", 5, 15);
         for(let i = 0; i < player.life; i++){
+            fill(255);
             rect(offX, 5, 10, 10);
             offX += 15;
         }
+        fill('navy');
         if(player.inBuff){
             text("BUFF", 5, 30);
         }
@@ -160,8 +163,9 @@ class UI{
         textSize(32);
         textAlign(CENTER);
         rectMode(CENTER);
-
-        rect(250, 325, 500, 650);
+        
+        //rect(250, 325, 500, 650);
+        image(mn, 0, 0, 500, 650);
 
         fill('red');
         rect(250, 440, 120, 40);

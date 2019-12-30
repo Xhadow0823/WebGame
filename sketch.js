@@ -14,6 +14,8 @@ let ret = false;
 // PRELOAD BLOCK
 //TX
 let bg;
+let ll;
+let mn;
 let urchin;
 let squid;
 let plastic_bag;
@@ -39,7 +41,9 @@ function preload(){
     //TOOLS
 
     //ASSETS
-    bg = loadImage('assets/starry-sky.jpg');
+    bg = loadImage('assets/BBB.png');
+    ll = loadImage('assets/L.png');
+    mn = loadImage('assets/MN.png');
     urchin = loadImage('assets/sea_urchin.png');
     squid = loadImage('assets/squid.png');
     plastic_bag = loadImage('assets/plastic_bag.png');
