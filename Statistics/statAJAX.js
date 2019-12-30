@@ -1,5 +1,5 @@
 //let url = 'http://testdm.rf.gd/rank.php';
-let url = 'https://cors-anywhere.herokuapp.com/testdm.rf.gd/rank.php';
+//let url = 'https://cors-anywhere.herokuapp.com/testdm.rf.gd/rank.php';
 //origin,x-requested-with
 $(()=>{
     $.post( url,

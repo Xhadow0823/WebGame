@@ -64,6 +64,14 @@ class World{
             this.ui.currentAcc = "So Strong!!";
             this.ui.accOpc = 255;
         }
+        if(story.stage==story.finalStage && !this.acc4){
+            console.log('get acc 4');
+            this.acc4 = true;
+            //reveal something
+            reveal('korea_fish');  //DOMCtrler.js
+            this.ui.currentAcc = "JOKER!!";
+            this.ui.accOpc = 255;
+        }
     }
 
     initGame(){

@@ -1,7 +1,7 @@
 class Story{
     constructor(){
         this.stages = [];
-        this.stage = 0;
+        this.stage = 2;
 
         this.infinityMode = false;
         this.score = 0;
@@ -22,7 +22,7 @@ class Story{
         if(!this.stages[this.stage].instaned){
             this.stageOpc = 255;
             this.stages[this.stage].instan.forEach((item, idx)=>{
-                EC.instantiate(item.x, item.y, item.type);
+                EC.instantiate(item.x, item.y, item.type, item.cate);
             });
             this.stages[this.stage].instaned = true;
             console.log('instaned');
@@ -159,7 +159,7 @@ story.addStage(new class{  //Stage3
         {x:constrain(randomGaussian(250, 100),100, 400), y:-530, type:4},
         {x:constrain(randomGaussian(250, 100),100, 400), y:-120, type:3},
         {x:constrain(randomGaussian(250, 100),100, 400), y:-150, type:3},
-        {x:constrain(randomGaussian(250, 100),100, 400), y:-800, type:4}
+        {x:constrain(randomGaussian(250, 100),100, 400), y:-800, type:4, cate:3}
     ];
     path = [
         {x:500/3, y:1000},
@@ -179,7 +179,7 @@ story.addStage(new class{  //Stage3
     pass(){
         // check ECaaaa
         if(EC.Enemies.length == 0){
-            console.log('Stage2:  score : ', player.life);
+            console.log('Stage3:  score : ', player.life);
             return true;
         }else{
             return false;

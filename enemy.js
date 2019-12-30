@@ -1,7 +1,7 @@
 class Enemy extends GameObject {
-    constructor(x, y, pType = 2){
+    constructor(x, y, pType = 2, cate=0){
         super(x, y);
-        this.cate = 0;  //overload
+        this.cate = cate;  //overload
 
         this.fullLife = this.life = 5;
         this.isOut = false;
@@ -73,8 +73,8 @@ class EnemyCtrler{
         this.BC = BC;
         this.world = WORLD;
     }
-    instantiate(x, y, type){
-        this.Enemies.push(new Enemy(x, y));
+    instantiate(x, y, type, cate){
+        this.Enemies.push(new Enemy(x, y, type, cate));
     }
     update(){
         for(let i = this.Enemies.length-1; i >= 0; i--){

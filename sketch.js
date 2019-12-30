@@ -118,7 +118,9 @@ function draw() {
 }
 
 function mouseClicked() {
-    BC.shoot(mouseX, mouseY, 2);
+    if(WORLD.CHEAT){
+        BC.shoot(mouseX, mouseY, -1, player.GOID, 90, 0);
+    }
     //EC.instantiate(mouseX, mouseY);
     WORLD.update(mouseX, mouseY);
 }
