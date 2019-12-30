@@ -1,6 +1,6 @@
 let url = 'http://testdm.rf.gd/rank.php';
 $(()=>{
-    $.post( url,
+    $.get( url,
             null,
             (resp)=>{
                 console.log(resp);
