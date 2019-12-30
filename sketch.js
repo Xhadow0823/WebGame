@@ -84,6 +84,8 @@ function setup() {
     player = new Player(width/2, height/2);
     //ey = new Enemy(200, 200);
     BFC = new BuffCtrler();
+    //hide the loading animate
+    $('#cl').hide();
 }
 
 function draw() {
