@@ -1,6 +1,6 @@
 class World{
     constructor(){
-        this.state = 0;  //0:init
+        this.state = 0;  //0:init , 1:game, 2:end
         this.diff = 0;  //0:easy, 1 hard
 
         this.width = 500;
@@ -15,6 +15,14 @@ class World{
         this.CHEAT = false;
 
         /////
+        this.acc1 = false;
+        this.acc2 = false;
+        this.acc3 = false;
+        this.acc4 = false;
+        this.acc5 = false;
+        this.acc6 = false;
+        this.acc7 = false;
+        /////
         this.cheatCnt = 0;
         this.stageOpc = 255;
         /////
@@ -22,10 +30,40 @@ class World{
         this.b2y = 0;
     }
     updateState(){
-
-    }
-    setState(st){
-        this.state = st;
+        if(player.life<=0 && !this.CHEAT){
+            this.state = 2;
+            this.pause = true;
+            if(!this.acc3){
+                console.log('get acc 3');
+                this.acc3 = true;
+                //reveal something
+                reveal('how_dare_you');  //DOMCtrler.js
+                this.ui.currentAcc = "how_dare_you!!";
+                this.ui.accOpc = 255;
+            }
+            if(story.stage == story.finalStage && !this.upload){
+                let name = prompt("Your Name? ", 'anonymous');
+                this.upload = true;
+                console.log(name);
+                //upload score////////////////////
+            }
+        }
+        if(player.bMode==1 && player.bType==1 && !this.acc1){
+            console.log('get acc 1');
+            this.acc1 = true;
+            //reveal something
+            reveal('ode');  //DOMCtrler.js
+            this.ui.currentAcc = "ode!!";
+            this.ui.accOpc = 255;
+        }
+        if(player.bMode==1 && player.bType==2 && !this.acc2){
+            console.log('get acc 2');
+            this.acc2 = true;
+            //reveal something
+            reveal('muscular_dolphin');  //DOMCtrler.js
+            this.ui.currentAcc = "So Strong!!";
+            this.ui.accOpc = 255;
+        }
     }
 
     initGame(){
@@ -69,35 +107,45 @@ class World{
         }
     }
     update(mx, my){
-        if(this.state === 0){
-            if(mx>250-60 && mx<250+60
-                && my>440-20 && my<490+20){
-                if(my<440+20){
-                    // click start
-                    console.log('start');
-                    this.initGame();
-                    this.state = 1;
-                    shoot3.play();
-                }else if(my>490-20){
-                    this.diff = 1 - this.diff;
-                    shoot3.play();
-                }
-            }
-        }
+        this.updateState();
         switch(this.state){
             case 0:
-                
+                if(mx>250-60 && mx<250+60
+                    && my>440-20 && my<490+20){
+                    if(my<440+20){
+                        // click start
+                        console.log('start');
+                        this.initGame();
+                        this.state = 1;
+                        shoot3.play();
+                    }else if(my>490-20){
+                        this.diff = 1 - this.diff;
+                        shoot3.play();
+                    }
+                }
                 break;
             case 1:
                 story.updateStage();
+                break;
+            case 2:
+                break;
         }
     }
     draw(){
         this.ui.showDetail();
         this.ui.showPause(this.pause);
-        if(this.state === 0){
-            this.ui.initM();
+        this.ui.showGetAcc();
+        switch(this.state){
+            case 0:
+                this.ui.initM();
+                break;
+            case 1:
+                break;
+            case 2:
+                this.ui.showEnd();
+                break;
         }
+        
     }
     background(){
         push();
@@ -115,13 +163,14 @@ class World{
 
 class UI{
     constructor(){
-        
+        this.currentAcc = "";
+        this.accOpc = 0;
     }
     draw(){
 
     }
-    showPause(pause){
-        if(pause){
+    showPause(){
+        if(WORLD.pause && WORLD.state!=2){  //2:end not show rect
             let size = 50;
             let baseX = width/2;
             let baseY = height/2;
@@ -153,9 +202,18 @@ class UI{
             text("CHEAT MODE", 5, 45);
         }
         if(story.infinityMode){
-            console.log("LL");
             textAlign(RIGHT, TOP);
             text(`SCORE: ${story.score}`, 495, 5);
+        }
+        pop();
+    }
+    showGetAcc(){
+        push();
+        if(this.accOpc>0){
+            fill(255, 204, 0, this.accOpc-=0.5);
+            textAlign(LEFT);
+            textSize(18);
+            text('Unlock accomplishment : '+this.currentAcc, 5, 62);
         }
         pop();
     }
@@ -181,5 +239,15 @@ class UI{
         fill('white');
         text((WORLD.diff?'Hard':'Easy'), 250, 500);
         pop();
+    }
+    showEnd(){
+        if(WORLD.state === 2){
+            push();
+            fill('red');
+            textSize(32);
+            textAlign(CENTER);
+            text('YOU DIE!!', 250, 250);
+            pop();
+        }
     }
 }

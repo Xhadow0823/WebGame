@@ -1,10 +1,11 @@
 class Story{
     constructor(){
         this.stages = [];
-        this.stage = 2;
+        this.stage = 0;
 
         this.infinityMode = false;
         this.score = 0;
+        this.finalStage = 3;
         /////
         this.stageOpc = 255;
     }
@@ -104,7 +105,7 @@ story.addStage(new class{  //Stage1
     pass(){
         // check ECaaaa
         if(EC.Enemies.length == 0){
-            console.log('score : ', player.life);
+            console.log('Stage1:  score : ', player.life);
             return true;
         }else{
             return false;
@@ -140,7 +141,45 @@ story.addStage(new class{  //Stage2
     pass(){
         // check ECaaaa
         if(EC.Enemies.length == 0){
-            console.log('score : ', player.life);
+            console.log('Stage2:  score : ', player.life);
+            return true;
+        }else{
+            return false;
+        }
+    }
+});
+story.addStage(new class{  //Stage3
+    instaned = false;
+    moved = false;
+    setBuff = false;
+    name = "3";
+
+    instan = [
+        {x:constrain(randomGaussian(250, 100),100, 400), y:-500, type:3},
+        {x:constrain(randomGaussian(250, 100),100, 400), y:-530, type:4},
+        {x:constrain(randomGaussian(250, 100),100, 400), y:-120, type:3},
+        {x:constrain(randomGaussian(250, 100),100, 400), y:-150, type:3},
+        {x:constrain(randomGaussian(250, 100),100, 400), y:-800, type:4}
+    ];
+    path = [
+        {x:500/3, y:1000},
+        {x:500/3*2, y:1000},
+        {x:500/3, y:1000},
+        {x:500/3*2, y:1000},
+        {x:500/3*2, y:1000}
+    ]
+    
+    buffs = [
+        {x:constrain(randomGaussian(250, 100),50, 450), y:-5000, type:0},
+        {x:constrain(randomGaussian(250, 100),50, 450), y:-10000, type:1},
+        {x:constrain(randomGaussian(250, 100),50, 450), y:-1300, type:4},
+        {x:constrain(randomGaussian(250, 100),50, 450), y:-2000, type:2}
+    ]
+
+    pass(){
+        // check ECaaaa
+        if(EC.Enemies.length == 0){
+            console.log('Stage2:  score : ', player.life);
             return true;
         }else{
             return false;
@@ -157,7 +196,7 @@ story.addStage(new class{  //Stage ∞
     name = " ∞ ";
 
     ///////////////////////
-    dc = 5000;
+    dc = 8000;
     dccnt = 0;
     iLimit = 2;
     bLimit = 2;
@@ -201,33 +240,6 @@ story.addStage(new class{  //Stage ∞
 
     pass(){
         // check ECaaaa
-        return false;
-    }
-});
-
-let gameover = false;
-story.addStage(new class{
-    instaned = true;
-    moved = true;
-    setBuff = true;
-    pass(){
-        //  infinity stage
-        if(gameover===true){
-            console.log('end INFINITY');
-            return true;
-        }else{
-            return false;
-        }
-    }
-});
-
-story.addStage(new class{
-    instaned = true;
-    moved = true;
-    setBuff = true;
-    pass(){
-        //  end stage
-        //console.log('END');
         return false;
     }
 });

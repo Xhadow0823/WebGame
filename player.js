@@ -21,7 +21,7 @@ class Player extends GameObject{
         this.inBuff = false;
     }
     update(){  //overload
-        if(this.world.state!=1){  //not game state
+        if(this.world.state!=1 && !this.world.CHEAT){  //not game state
             return;
         }
         if(this.dccnt > this.dc){

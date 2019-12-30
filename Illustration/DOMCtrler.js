@@ -15,12 +15,12 @@
     }
     
     $(()=>{
-        renewCell('hodara', 'jpg');
-        renewCell('how_dare_you', 'gif');
+        renewCell('hodara', 'jpg');  //first time
+        renewCell('how_dare_you', 'gif');// die
         renewCell('KF', 'jpg');
-        renewCell('korea_fish', 'jpg');
-        renewCell('ode', 'jpg');
-        renewCell('muscular_dolphin', 'jpg');
+        renewCell('korea_fish', 'jpg');  //boss
+        renewCell('ode', 'jpg');  //acc1
+        renewCell('muscular_dolphin', 'jpg');  //straw
         //POPUP/////
         var modal = document.getElementById("myModal");
         var modalImg = document.getElementById("img01");
