@@ -201,6 +201,7 @@ story.addStage(new class{  //Stage ∞
     iLimit = 2;
     bLimit = 2;
     infInit(){
+        story.stageOpc = 255;
         player.fullLife = player.life = 9;
         story.infinityMode = true;
         this.init = true;

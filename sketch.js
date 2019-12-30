@@ -124,7 +124,9 @@ function mouseClicked() {
         BC.shoot(mouseX, mouseY, -1, player.GOID, 90, 0);
     }
     //EC.instantiate(mouseX, mouseY);
-    WORLD.update(mouseX, mouseY);
+    if(WORLD.state===0){
+        WORLD.update(mouseX, mouseY);
+    }
 }
 
 function keyP() {

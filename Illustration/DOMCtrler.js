@@ -47,3 +47,13 @@
             $(`#${name} span`).attr('alt'));
         }
     }
+
+    function RA(){
+        reveal('hodara');
+        reveal('how_dare_you');
+        reveal('KF');
+        reveal('korea_fish');
+        reveal('ode');
+        reveal('muscular_dolphin');
+        reveal('crab_rave');
+    }
