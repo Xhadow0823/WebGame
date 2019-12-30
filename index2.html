@@ -4,185 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="/favicon.png" type="image/png" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    
-    <style>
-            /*  RWD  */
-            @media screen and (min-width: 576px){
-            #acc {
-                min-width: 576px;
-                max-width: 576px;
-            }
-        }
-        html,
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: OCR-A, Arial;
-        }
-
-        canvas {
-            margin: 0 auto;
-            display: block;
-        }
-
-        #displayer {
-            width: 100%;
-            height: 650px;
-            display: block;
-            background-color: wheat;
-
-            text-align: center;
-        }
-        /*  */
-        
-        #illu {
-            position: relative;
-            width: 320px;
-            background-color: #6c5ce7;
-
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-
-            margin: 0 auto;
-            padding-top: 50px;
-        }
-
-        .cell {
-            position: relative;
-            width: 100px;
-            height: 100px;
-            background-color: #a29bfe;
-            margin: 25px;
-
-            color: navy;
-            text-align: center;
-        }
-
-        .cell img {
-            max-width: 100%;
-            /*padding-top: 5px;*/
-            max-height: 80%;
-        }
-
-        .cell span {
-            width: 100%;
-            display: block;
-        }
-        /*  */
-        .popup {
-        border-radius: 5px;
-        cursor: pointer;
-        transition: 0.3s;
-        }
-
-        .popup:hover {opacity: 0.7;}
-
-        /* The Modal (background) */
-        .modal {
-        display: none; /* Hidden by default */
-        position: fixed; /* Stay in place */
-        z-index: 1; /* Sit on top */
-        padding-top: 100px; /* Location of the box */
-        left: 0;
-        top: 0;
-        width: 100%; /* Full width */
-        height: 100%; /* Full height */
-        overflow: auto; /* Enable scroll if needed */
-        background-color: rgb(0,0,0); /* Fallback color */
-        background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
-        }
-
-        /* Modal Content (Image) */
-        .modal-content {
-        margin: auto;
-        display: block;
-        width: 80%;
-        max-width: 700px;
-        }
-
-        /* Caption of Modal Image (Image Text) - Same Width as the Image */
-        #caption {
-        margin: auto;
-        display: block;
-        width: 80%;
-        max-width: 700px;
-        text-align: center;
-        color: #ccc;
-        padding: 10px 0;
-        height: 150px;
-        }
-
-        /* Add Animation - Zoom in the Modal */
-        .modal-content, #caption {
-        animation-name: zoom;
-        animation-duration: 0.6s;
-        }
-
-        @keyframes zoom {
-        from {transform:scale(0)}
-        to {transform:scale(1)}
-        }
-
-        /* The Close Button */
-        .close {
-        position: absolute;
-        top: 15px;
-        right: 35px;
-        color: #f1f1f1;
-        font-size: 40px;
-        font-weight: bold;
-        transition: 0.3s;
-        }
-
-        .close:hover,
-        .close:focus {
-        color: #bbb;
-        text-decoration: none;
-        cursor: pointer;
-        }
-        /*  */
-        #stasc {
-            background: #00cec9;
-            width: 200px;
-            height: 600px;
-
-            overflow: overlay;
-            margin: 0 auto;
-        }
-
-        #stasc::-webkit-scrollbar {
-            display: none;
-        }
-
-        #stasc table {
-            margin: 0 auto;
-            padding-top: 50px;
-            width: 100%;
-            text-align: center;
-        }
-
-        #stasc table tr td,th {
-            border-bottom: 1px solid navy;
-        }
-        #n1::before{
-            content: "";
-            position: relative;
-            display: inline-block;
-            background-image: url("Statistics/crown.png");
-            background-size:18px 18px;
-            
-            width:18px;
-            height:18px;
-        }
-        #onload {
-            text-align: center;
-            font-weight: bold;
-        }
-    </style>
+    <link rel="stylesheet" href="mainStyle.css">
+    <!--GAME PART-->
     <script src="p5.js"></script>
     <script src="p5.sound.min.js"></script>
     <script src="tools.js"></script>
@@ -194,10 +21,12 @@
     <script src="buff.js"></script>
     <script src="story.js"></script>
     <script src="sketch.js"></script>
-    <title>Test Page</title>
+    <!--END GAME PART-->
+    <title>我還不射爆</title>
 </head>
 
 <body>
+    <script>//alert('PPT 在頁底');</script>
     <header>
         <div class="collapse bg-dark" id="navbarHeader">
           <div class="container">
@@ -276,17 +105,24 @@
                 </div>
                 <div class="card-body">
                     <div id="illu">
-                        <!--this is a template of 'cell'-->
-                        <div class="cell">
-                            <img src="Illustration/cactus.png" alt="gameObj" class="popup">
-                            <span>name</span>
-                        </div>
+                        <!--illu part-->
                     </div>
                 </div>
             </div>
             <div class="card shadow-sm col">
+                <div class="card-header text-center">
+                    <h4 class="my-0 font-weight-normal">你知道嗎</h4>
+                </div>
                 <div class="card-body">
-                    SOMETHING
+                    <img class="img-fluid mb-2 popup" src="guide.png" alt="guide.png">
+
+                    <ul class="list-group">
+                        <li class="list-group-item">被塑膠袋噎到，就會窒息。😢</li>
+                        <li class="list-group-item">要畫一隻海龜時，只要先畫一個垃圾桶，再把吸管、塑膠袋丟進去就完成了。😢</li>
+                        <li class="list-group-item">誰能想的到，這名16歲環保少女，在四年前，竟只是一名12歲少女！😢</li>
+                        <li class="list-group-item">每個成功的工程師背後，都有一條彎曲的脊椎。😢</li>
+                        <li class="list-group-item">海洋很美麗吧？不管多美麗，工程師們都還在工作喔！😢</li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -297,8 +133,8 @@
     <footer class="my-5 pt-5 text-muted text-center text-small">
         <p class="mb-1">© 2019-2020 1081WebApplication Final Project</p>
         <ul class="list-inline">
-          <li class="list-inline-item"><a href="#">Privacy</a></li>
-          <li class="list-inline-item"><a href="#">PPT</a></li>
+          <li class="list-inline-item"><a href="javascript:alert('You found me!!');reveal('KF');">Privacy</a></li>
+          <li class="list-inline-item"><a href="https://1drv.ms/p/s!AtcOBkaSj-rSqmjuAIkG90MFpqwV" target="_blank" alt="/我還不射爆-00757036+00757046.ppt">PPT</a></li>
         </ul>
     </footer>
 
@@ -311,7 +147,9 @@
         <!-- Modal Caption (Image Text) -->
         <div id="caption"></div>
       </div>
-
+      <!--
+      <div>Icons made by <a href="https://www.flaticon.com/authors/eucalyp" title="Eucalyp">Eucalyp</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+      -->
 <script>
     $('#defaultCanvas0').ready(()=>{
         $('#cl').hide();

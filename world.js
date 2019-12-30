@@ -263,6 +263,10 @@ class UI{
 
         fill('white');
         text((WORLD.diff?'Hard':'Easy'), 250, 500);
+
+        textSize(12);
+        textAlign(LEFT);
+        text('© 2019-2020 dev by xhadow0823',5, 645);
         pop();
     }
     showEnd(){
