@@ -1,8 +1,7 @@
-//let url = 'http://testdm.rf.gd/rank.php';
-//let url = 'https://cors-anywhere.herokuapp.com/testdm.rf.gd/rank.php';
-//origin,x-requested-with
+
+let rankUrl = 'https://test123testt.herokuapp.com/rank.php';
 $(()=>{
-    $.post( url,
+    $.post( rankUrl,
             null,
             (resp)=>{
                 console.log(resp);
@@ -21,10 +20,10 @@ $(()=>{
             },
             "json");
 });
-function add(name, score){
+function updateScore(n, s){
     $('#tbbd').text("");$('#onload').hide(false);
-    $.post( url,
-            {name:name, score:score},
+    $.post( rankUrl,
+            {name:n, score:s},
             (resp)=>{
                 console.log(resp);
                 $('#onload').hide();
@@ -33,6 +32,7 @@ function add(name, score){
                 });
                 let fi = "id='n1'";  //with crown
                 resp.forEach((item,idx)=>{
+                    if(idx>=20){  return;}
                     $('#tbbd').append(`
                     <tr class="rank-r">
                     <td>${idx+1}.</td><td ${fi}>${item[0]}</td><td>${item[1]}</td>

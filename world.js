@@ -9,7 +9,7 @@ class World{
         this.pause = false;
         this.mute = false;
         this.bgSpeed = 2;
-        this.score = 0;
+        this.score = 0;  //deprecated
 
         this.ui = new UI;
         this.CHEAT = false;
@@ -30,7 +30,7 @@ class World{
         this.b2y = 0;
     }
     updateState(){
-        if(player.life<=0 && !this.CHEAT){
+        if(player.life<=0 && !this.CHEAT){  //player die
             this.state = 2;
             this.pause = true;
             if(!this.acc3){
@@ -44,7 +44,8 @@ class World{
             if(story.stage == story.finalStage && !this.upload){
                 let name = prompt("Your Name? ", 'anonymous');
                 this.upload = true;
-                console.log(name);
+                console.log(name, story.score);
+                updateScore(name, story.score);  //statCtrler.js
                 //upload score////////////////////
             }
         }

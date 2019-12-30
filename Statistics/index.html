@@ -73,28 +73,16 @@
             Onloading...
         </div>
     </div>
-
-    <div style="text-align: center; margin-top: 25px;">
-        <input type="button" value="add" id="testbtn">
-    </div>
     <script>
         let btn = document.getElementById('testbtn');
         let tbbd = document.getElementById('tbbd');
 
-        $('#testbtn').on('click', ()=>{
-            $('#tbbd').append(`
-                <tr class="rank-r">
-                    <td>69.</td><td>TMP</td><td>878787</td>
-                </tr>
-            `);
-        })
-
-        let url = 'http://testdm.rf.gd/rank.php';
+        let url = 'https://test123testt.herokuapp.com/rank.php';
         $(()=>{
-            $.ajaxSetup({
-                headers: {  'Access-Control-Allow-Origin': '*',
-                            'x-requested-with': 'XMLHttpRequest' }
-            });
+            //$.ajaxSetup({
+            //    headers: {  'Access-Control-Allow-Origin': '*',
+            //                'x-requested-with': 'XMLHttpRequest' }
+            //});
             $.post( url,
                     null,
                     (resp)=>{

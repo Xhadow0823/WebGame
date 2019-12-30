@@ -210,8 +210,6 @@ story.addStage(new class{  //Stage ∞
             this.infInit();
         }
         if(this.dccnt >= this.dc){
-            console.log('OP');
-            //do something
             let ri = random(1, this.iLimit);
             for(let i = 0; i < ri; i++){
                 let item = {x:constrain(randomGaussian(250, 100),100, 400),
