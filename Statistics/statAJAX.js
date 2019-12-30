@@ -1,6 +1,8 @@
-let url = 'http://testdm.rf.gd/rank.php';
+//let url = 'http://testdm.rf.gd/rank.php';
+let url = 'https://cors-anywhere.herokuapp.com/testdm.rf.gd/rank.php';
+//origin,x-requested-with
 $(()=>{
-    $.get( url,
+    $.post( url,
             null,
             (resp)=>{
                 console.log(resp);
