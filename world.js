@@ -80,6 +80,14 @@ class World{
             this.ui.currentAcc = "Faster!!";
             this.ui.accOpc = 255;
         }
+        if(story.stage==1 && !this.acc6){
+            console.log('get acc 6');
+            this.acc6 = true;
+            //reveal something
+            reveal('hodara');  //DOMCtrler.js
+            this.ui.currentAcc = "First time!!";
+            this.ui.accOpc = 255;
+        }
     }
 
     initGame(){

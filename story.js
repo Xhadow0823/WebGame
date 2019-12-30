@@ -1,7 +1,7 @@
 class Story{
     constructor(){
         this.stages = [];
-        this.stage = 2;
+        this.stage = 0;
 
         this.infinityMode = false;
         this.score = 0;
