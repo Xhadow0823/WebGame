@@ -77,8 +77,10 @@ class World{
                     console.log('start');
                     this.initGame();
                     this.state = 1;
+                    shoot3.play();
                 }else if(my>490-20){
                     this.diff = 1 - this.diff;
+                    shoot3.play();
                 }
             }
         }

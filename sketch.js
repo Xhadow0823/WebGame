@@ -28,6 +28,8 @@ let kfh;
 let muteS;
 //SE
 let BGM;
+let sad;
+let orc;
 let pauseSnd;
 let pauseEndSnd;
 let enemyDsty;
@@ -56,7 +58,9 @@ function preload(){
     muteS = loadImage('assets/mute.png');
     //SE
     //soundFormats('mp3');
-    BGM = loadSound('sounds/game_maoudamashii_8_piano01.mp3');
+    //sad = loadSound('sounds/game_maoudamashii_8_piano01.mp3');  //deprecated
+    orc = loadSound('sounds/orchestra04.mp3');
+    BGM = orc;
     pauseSnd = loadSound('sounds/setPause.mp3');
     pauseEndSnd = loadSound('sounds/pauseEnd.mp3');
     enemyDsty = loadSound('sounds/enemyDestroied.mp3');
