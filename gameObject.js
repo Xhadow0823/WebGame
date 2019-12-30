@@ -19,7 +19,9 @@ class GameObject {
     draw(){
         push();
         fill(150, 100);
-        circle(this.pos.x, this.pos.y, this.r*2);
+        if(this.world.CHEAT){
+            circle(this.pos.x, this.pos.y, this.r*2);
+        }
         image(this.style[this.cate], this.pos.x-this.r, this.pos.y-this.r,
               this.r*2, this.r*2);
         stroke(255, 100);

@@ -91,6 +91,10 @@
 
         let url = 'http://testdm.rf.gd/rank.php';
         $(()=>{
+            $.ajaxSetup({
+                headers: {  'Access-Control-Allow-Origin': '*',
+                            'x-requested-with': 'XMLHttpRequest' }
+            });
             $.post( url,
                     null,
                     (resp)=>{

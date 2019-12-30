@@ -86,11 +86,15 @@ class Bullet {
             rotate(this.deg);
             rectMode(CENTER);
             if(this.shape){
-                rect(0, 0, this.width, this.height);
+                if(WORLD.CHEAT){
+                    rect(0, 0, this.width, this.height);
+                }
                 image(this.style[this.cate], 0-this.width/2, 0-this.height/2,
                     this.width, this.height);
             }else{
-                circle(0, 0, 2*this.r);
+                if(WORLD.CHEAT){
+                    circle(0, 0, 2*this.r);
+                }
                 image(this.style[this.cate], 0-this.r, 0-this.r,
                     this.r*2, this.r*2);
             }

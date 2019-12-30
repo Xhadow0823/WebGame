@@ -10,7 +10,6 @@
             </div>`;
             $('#illu').append(ht);
         }
-        
         return $('#'+name);
     }
     
@@ -21,6 +20,7 @@
         renewCell('korea_fish', 'jpg');  //boss
         renewCell('ode', 'jpg');  //acc1
         renewCell('muscular_dolphin', 'jpg');  //straw
+        renewCell('crab_rave', 'gif');  //crab
         //POPUP/////
         var modal = document.getElementById("myModal");
         var modalImg = document.getElementById("img01");

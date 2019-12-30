@@ -72,6 +72,14 @@ class World{
             this.ui.currentAcc = "JOKER!!";
             this.ui.accOpc = 255;
         }
+        if(player.dc<=300 && player.bType==2 && !this.acc5){
+            console.log('get acc 5');
+            this.acc5 = true;
+            //reveal something
+            reveal('crab_rave');  //DOMCtrler.js
+            this.ui.currentAcc = "Faster!!";
+            this.ui.accOpc = 255;
+        }
     }
 
     initGame(){

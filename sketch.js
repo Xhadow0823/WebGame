@@ -139,7 +139,9 @@ function keyP() {
     if (keyIsDown(83)) {
         y = +1;
     }
-    player.move(x, y);
+    if(!WORLD.pause || WORLD.CHEAT){
+        player.move(x, y);
+    }
 }
 
 function keyPressed() {  //callback
