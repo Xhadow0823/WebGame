@@ -70,6 +70,7 @@ function preload(){
     shoot2 = loadSound('sounds/shoot (2).mp3');
     shoot3 = loadSound('sounds/shoot (3).mp3');
     shoot4 = loadSound('sounds/shoot (4).mp3');
+    failS = loadSound('sounds/fail.mp3');
 }
 // END PRELOAD BLOCK
 

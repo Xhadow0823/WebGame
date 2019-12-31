@@ -38,10 +38,12 @@ class World{
                 this.acc3 = true;
                 //reveal something
                 reveal('how_dare_you');  //DOMCtrler.js
+                failS.play();
                 this.ui.currentAcc = "how_dare_you!!";
                 this.ui.accOpc = 255;
             }
             if(story.stage == story.finalStage && !this.upload){
+                failS.play();
                 let name = prompt("Your Name? ", 'anonymous');
                 this.upload = true;
                 console.log(name, story.score);
