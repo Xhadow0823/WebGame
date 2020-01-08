@@ -171,6 +171,12 @@ function keyPressed() {  //callback
         WORLD.cheatMode(keyCode);
     }
 }
+
+function PD(){
+    story.stage = 3;
+    setTimeout(()=>{player.life = 0;  story.score = 10;}, 1000);
+}
+
 /*
 <script src="p5.js"></script>
 <script src="p5.sound.min.js"></script>
